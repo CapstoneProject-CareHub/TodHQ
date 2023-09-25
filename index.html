@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>TodHQ</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="logo.png" alt="Daycare Logo" id="navbar-logo">
+        </div>
+    
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+    
+        <div class="auth-links">
+            <a href="#signin">Sign In</a>
+            <a href="#signup">Sign Up</a>
+        </div>
+    </nav>
+    
+
+    <!-- Add content for each section as required -->
+
+    <div id="storeLocator">
+        <input type="text" id="zipcode" placeholder="Enter Zip Code">
+        <button onclick="findStore()">Find</button>
+        <div id="storeResults"></div>
+    </div>
+
+</body>
+</html>

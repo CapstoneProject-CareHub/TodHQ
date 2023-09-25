@@ -1,0 +1,85 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 100px;
+    background-color: rgb(2, 181, 252);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    flex: 1;
+}
+
+.logo img {
+    max-height: 50px;
+    height: 100vh;
+}
+
+.nav-links {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-links {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+
+#storeLocator {
+    margin-top: 50px;
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#storeLocator input, #storeLocator button {
+    padding: 10px 15px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+#storeLocator button {
+    background-color: #2E3131;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#storeLocator button:hover {
+    background-color: #464a4a;
+}
+
+#storeResults {
+    margin-top: 20px;
+}
