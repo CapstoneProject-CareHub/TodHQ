@@ -1,0 +1,275 @@
+[
+  {
+    "name": "ViVi Family Daycare",
+    "description": "Child-focused, nurturing environment.",
+    "zip": "94501",
+    "rating": "4.5/5",
+    "contact_number": "(510) 555-1212"
+  },
+  {
+    "name": "Little Blue Dolphins Family Daycare",
+    "description": "Affordable, high-quality childcare.",
+    "zip": "94502",
+    "rating": "5/5",
+    "contact_number": "(510) 555-1313"
+  },
+  {
+    "name": "Happy Little World Child Care",
+    "description": "Educational and fun programs for children of all ages.",
+    "zip": "94503",
+    "rating": "4/5",
+    "contact_number": "(510) 555-1414"
+  },
+  {
+    "name": "Forest Garden Day Care",
+    "description": "Nature-based childcare with a focus on learning through play.",
+    "zip": "94504",
+    "rating": "4.5/5",
+    "contact_number": "(510) 555-1515"
+  },
+  {
+    "name": "Pequenas Burbujas Day Care",
+    "description": "Spanish-immersion childcare for children from infancy to preschool.",
+    "zip": "94505",
+    "rating": "5/5",
+    "contact_number": "(510) 555-1616"
+  },
+  {
+    "name": "Thomas Family Child Care",
+    "description": "Small, family-like setting with experienced caregivers.",
+    "zip": "94506",
+    "rating": "4/5",
+    "contact_number": "(510) 555-1717"
+  },
+  {
+    "name": "Lin's Famly Childcare",
+    "description": "Affordable childcare with a focus on early learning.",
+    "zip": "94507",
+    "rating": "4/5",
+    "contact_number": "(510) 555-1818"
+  },
+  {
+    "name": "Le Petit Z Montessori Preschool",
+    "description": "Authentic Montessori preschool program for children ages 2-6.",
+    "zip": "94508",
+    "rating": "4.5/5",
+    "contact_number": "(510) 555-1919"
+  },
+  {
+    "name": "Bright Star Childcare",
+    "description": "State-of-the-art facility with experienced and qualified caregivers.",
+    "zip": "94509",
+    "rating": "4/5",
+    "contact_number": "(510) 555-2020"
+  },
+  {
+    "name": "Alameda Park Academy",
+    "description": "Preschool and kindergarten program with a focus on academic excellence.",
+    "zip": "94510",
+    "rating": "4.5/5",
+    "contact_number": "(510) 555-2121"
+  },
+  {
+    "name": "Alameda Montessori Children's House",
+    "description": "Authentic Montessori preschool and kindergarten program for children ages 2-6.",
+    "zip": "94511",
+    "rating": "5/5",
+    "contact_number": "(510) 555-2222"
+  },
+  {
+    "name": "Golden Bay Preschool",
+    "description": "Preschool and kindergarten program with a focus on social-emotional development.",
+    "zip": "94512",
+    "rating": "4.5/5",
+    "contact_number": "(510) 555-2323"
+  },
+  {
+    "name": "Harbor Bay KinderCare",
+    "description": "Nationwide childcare chain with a focus on early learning.",
+    "zip": "94501",
+    "rating": "4/5",
+    "contact_number": "(510) 555-2424"
+  },
+  {
+    "name": "Little Lion Preschool & Childcare",
+    "description": "Small, family-like setting with experienced caregivers.",
+    "zip": "94502",
+    "rating": "4.5/5",
+    "contact_number": "(510) 555-2525"
+  },
+  {
+    "name": "Fuzzy Caterpillar Preschool",
+    "description": "Nature-based preschool program with a focus on learning through play.",
+    "zip": "94503",
+    "rating": "5/5",
+    "contact_number": "(510) 555-2626"
+  },
+  {
+    "name": "Alameda Children's Center",
+    "description": "Nonprofit childcare center serving children from infancy to preschool.",
+    "zip": "94501",
+    "rating": "4.5/5",
+    "contact_number": "(510) 555-2727"
+  },
+  {
+    "name": "WeeCare Family Daycare",
+    "description": "Small, family-like setting with experienced caregivers.",
+    "zip": "94502",
+    "rating": "5/5",
+    "contact_number": "(510) 555-2828"
+  },
+  {
+    "name": "Montessori House of Alameda",
+    "description": "Authentic Montessori preschool and kindergarten program for children ages 2-6.",
+    "zip": "94503",
+    "rating": "4.5/5",
+    "contact_number": "(510) 555-2929"
+  },
+  {
+    "name": "Bright Horizons at Alameda",
+    "description": "Nationwide childcare chain with a focus on early learning.",
+    "zip": "94501",
+    "rating": "4/5",
+    "contact_number": "(510) 555-3030"
+  },
+  {
+    "name": "KinderCare Learning Center",
+    "description": "Nationwide childcare chain with a focus on early learning.",
+    "zip": "94502",
+    "rating": "4.5/5",
+    "contact_number": "(510) 555-3131"
+  },
+  {
+    "name": "Alameda Community Learning Center",
+    "description": "Nonprofit childcare center serving children from infancy to preschool.",
+    "zip": "94503",
+    "rating": "5/5",
+    "contact_number": "(510) 555-3232"
+  },
+  {
+    "name": "Alameda Head Start",
+    "description": "Federally funded early childhood education program for low-income families.",
+    "zip": "94501",
+    "rating": "4.5/5",
+    "contact_number": "(510) 555-3333"
+  },
+  {
+    "name": "Alameda Family Services",
+    "description": "Nonprofit organization that provides a variety of services to families, including childcare.",
+    "zip": "94502",
+    "rating": "5/5",
+    "contact_number": "(510) 555-3434"
+  },
+  {
+    "name": "Alameda Recreation and Community Services",
+    "description": "City department that offers a variety of programs and services for residents, including childcare.",
+    "zip": "94503",
+    "rating": "4.5/5",
+    "contact_number": "(510) 555-3535"
+  },
+  {
+    "name": "Alameda Public Library",
+    "description": "Public library that offers a variety of programs and services for residents, including childcare.",
+    "zip": "94501",
+    "rating": "5/5",
+    "contact_number": "(510) 555-3636"
+  },
+  {
+    "name": "Alameda Unified School District",
+    "description": "Public school district that serves Alameda students from kindergarten to 12th grade.",
+    "zip": "94502",
+    "rating": "4.5/5",
+    "contact_number": "(510) 555-3737"
+  },
+  {
+    "name": "Alameda Adult School",
+    "description": "Public adult school that offers a variety of classes and programs, including childcare.",
+    "zip": "94503",
+    "rating": "5/5",
+    "contact_number": "(510) 555-3838"
+  },
+  {
+    "name": "ABC Daycare",
+    "description": "Family-owned and operated daycare center serving children from infancy to preschool.",
+    "zip": "94501",
+    "rating": "4.5/5",
+    "contact_number": "(925) 555-1212"
+  },
+  {
+    "name": "DEF Daycare",
+    "description": "Affordable, high-quality childcare with a focus on early learning.",
+    "zip": "94502",
+    "rating": "5/5",
+    "contact_number": "(925) 555-1313"
+  },
+  {
+    "name": "GHI Daycare",
+    "description": "State-of-the-art facility with experienced and qualified caregivers.",
+    "zip": "94503",
+    "rating": "4.5/5",
+    "contact_number": "(925) 555-1414"
+  },
+  {
+    "name": "JLM Daycare",
+    "description": "Nature-based childcare with a focus on learning through play.",
+    "zip": "94504",
+    "rating": "4.5/5",
+    "contact_number": "(925) 555-1515"
+  },
+  {
+    "name": "NOP Daycare",
+    "description": "Spanish-immersion childcare for children from infancy to preschool.",
+    "zip": "94505",
+    "rating": "5/5",
+    "contact_number": "(925) 555-1616"
+  },
+  {
+    "name": "QRS Daycare",
+    "description": "Small, family-like setting with experienced caregivers.",
+    "zip": "94506",
+    "rating": "4.5/5",
+    "contact_number": "(925) 555-1717"
+  },
+  {
+    "name": "TUV Daycare",
+    "description": "Affordable childcare with a focus on early learning.",
+    "zip": "94507",
+    "rating": "4/5",
+    "contact_number": "(925) 555-1818"
+  },
+  {
+    "name": "WXY Daycare",
+    "description": "Authentic Montessori preschool program for children ages 2-6.",
+    "zip": "94508",
+    "rating": "4.5/5",
+    "contact_number": "(925) 555-1919"
+  },
+  {
+    "name": "ABC Montessori School",
+    "description": "Authentic Montessori preschool and kindergarten program for children ages 2-6.",
+    "zip": "94501",
+    "rating": "5/5",
+    "contact_number": "(925) 555-2020"
+  },
+  {
+    "name": "DEF KinderCare Learning Center",
+    "description": "Nationwide childcare chain with a focus on early learning.",
+    "zip": "94502",
+    "rating": "4.5/5",
+    "contact_number": "(925) 555-2121"
+  },
+  {
+    "name": "GHI Bright Horizons",
+    "description": "Nationwide childcare chain with a focus on early learning.",
+    "zip": "94503",
+    "rating": "5/5",
+    "contact_number": "(925) 555-2222"
+  },
+  {
+    "name": "JLM Community Learning Center",
+    "description": "Nonprofit childcare center serving children from infancy to preschool.",
+    "zip": "94504",
+    "rating": "4.5/5",
+    "contact_number": "(925) 555-2323"
+  }
+]
