@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - TodHQ</title>
+    <!-- Link to your CSS file for styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body><nav>
+        <div class="logo">
+            <img src="img/logo.png" alt="Daycare Logo" id="navbar-logo">
+        </div>
+        
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="#services">Services</a>
+            <a href="blog.html">Our Blog</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+        
+        <div class="auth-links">
+            <a href="#signin">Sign In</a>
+            <a href="#signup">Sign Up</a>
+        </div>
+    </nav>
+
+    <!-- Navigation (You can include your navbar here) -->
+    <!-- ... -->
+
+    <!-- Header -->
+    <header>
+        <h1>Get in touch with TodHQ!</h1>
+    </header>
+
+    <!-- Introduction -->
+    <section>
+        <p>At TodHQ, we are dedicated to bridging the gap between parents and trusted family-run daycares. Your feedback, concerns, and suggestions help us improve and serve you better. If you have any questions or just want to share your experience, please fill out the form below.</p>
+    </section>
+
+    <!-- Contact Form -->
+    <section>
+        <form action="submit_form.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="subject">Subject:</label>
+            <select id="subject" name="subject">
+                <option value="feedback">Feedback</option>
+                <option value="concern">Concern</option>
+                <option value="suggestion">Suggestion</option>
+                <option value="technical">Technical Issue</option>
+            </select>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+
+    <!-- Alternative Contact Methods -->
+    <section>
+        <p>You can also reach out to us directly at:</p>
+        <ul>
+            <li>Email: support@todhq.com</li>
+            <li>Phone: (123) 456-7890</li>
+        </ul>
+        <p>Follow and message us on our social media channels:</p>
+        <ul>
+            <li>
+                <a href="https://www.facebook.com/todhq-placeholder" target="_blank">
+                    <img src="img/fb.png" alt="Facebook Logo" width="20px"> Facebook
+                </a>
+            </li>
+            <li>
+                <a href="https://twitter.com/todhq-placeholder" target="_blank">
+                    <img src="img/tw.png" alt="Twitter Logo" width="20px"> Twitter
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/todhq-placeholder" target="_blank">
+                    <img src="img/inst.png" alt="Instagram Logo" width="20px"> Instagram
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Thank you for being a part of the TodHQ community. We look forward to hearing from you!</p>
+    </footer>
+
+</body>
+
+</html>
