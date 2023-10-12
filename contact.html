@@ -5,41 +5,163 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - TodHQ</title>
-    <!-- Link to your CSS file for styles -->
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Internal CSS for Contact Page */
+
+        /* Base styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #FAF3E0;
+            /* Soft beige background */
+            color: #333;
+            /* Dark text for contrast */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* Spread out sections vertically */
+            height: 100vh;
+        }
+
+        header {
+            background-color: #9fc8ff;
+            /* Peachy header background */
+            padding: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        section {
+            padding: 30px;
+        }
+
+        /* Form styles */
+        form {
+            background-color: #FFF;
+            /* White form background */
+            padding: 30px;
+            border-radius: 10px;
+            /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #CCC;
+            border-radius: 5px;
+            /* Gentle rounded corners */
+        }
+
+        input[type="submit"] {
+            background-color: #FFB6C1;
+            /* Soft pink button */
+            color: #FFF;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            /* Rounded button */
+            cursor: pointer;
+            transition: background-color 0.3s;
+            /* Smooth color transition */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #FF69B4;
+            /* Darker pink on hover */
+        }
+
+        nav ul li a {
+            font-size: 15px;
+            padding: 10px 25px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--tertiary-color);
+            /* Adjust as needed based on your color scheme */
+        }
+
+        #about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+            /* This ensures the div takes the full viewport height */
+            text-align: center;
+            /* This will center align the text elements */
+        }
+
+        #about-content h1 {
+            font-size: 35px;
+            /* Adjust to your preferred size */
+        }
+
+        #about-content p {
+            font-size: 25px;
+            /* Adjust to your preferred size */
+        }
+
+        /* Enhancements */
+        ul {
+            list-style-type: none;
+            /* Removing bullet points for a cleaner look */
+            padding: 0;
+        }
+
+        ul li {
+            margin: 5px 0;
+            /* Spacing out list items a bit */
+        }
+
+        /* Icons for direct contacts */
+        .contact-icon {
+            vertical-align: middle;
+            /* Align icon with text */
+            margin-right: 10px;
+        }
+
+        #contact-method {
+            text-align: center;
+        }
+    </style>
+
 </head>
 
-<body><nav>
-        <div class="logo">
-            <img src="img/logo.png" alt="Daycare Logo" id="navbar-logo">
-        </div>
-        
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="#services">Services</a>
-            <a href="blog.html">Our Blog</a>
-            <a href="#contact">Contact Us</a>
-        </div>
-        
-        <div class="auth-links">
-            <a href="#signin">Sign In</a>
-            <a href="#signup">Sign Up</a>
-        </div>
-    </nav>
-
-    <!-- Navigation (You can include your navbar here) -->
-    <!-- ... -->
+<body>
+    <iframe src="navbar.html" frameborder="0" scrolling="no" width="100%"></iframe>
 
     <!-- Header -->
-    <header>
+    <header id="about-content">
         <h1>Get in touch with TodHQ!</h1>
     </header>
 
     <!-- Introduction -->
-    <section>
-        <p>At TodHQ, we are dedicated to bridging the gap between parents and trusted family-run daycares. Your feedback, concerns, and suggestions help us improve and serve you better. If you have any questions or just want to share your experience, please fill out the form below.</p>
+    <section id="about-content">
+        <p>At TodHQ, we are dedicated to bridging the gap between parents and trusted family-run daycares. Your
+            feedback, concerns, and suggestions help us improve and serve you better. If you have any questions or just
+            want to share your experience, please fill out the form below.</p>
     </section>
+
 
     <!-- Contact Form -->
     <section>
@@ -66,36 +188,41 @@
     </section>
 
     <!-- Alternative Contact Methods -->
-    <section>
-        <p>You can also reach out to us directly at:</p>
-        <ul>
-            <li>Email: support@todhq.com</li>
-            <li>Phone: (123) 456-7890</li>
-        </ul>
-        <p>Follow and message us on our social media channels:</p>
-        <ul>
-            <li>
-                <a href="https://www.facebook.com/todhq-placeholder" target="_blank">
-                    <img src="img/fb.png" alt="Facebook Logo" width="20px"> Facebook
-                </a>
-            </li>
-            <li>
-                <a href="https://twitter.com/todhq-placeholder" target="_blank">
-                    <img src="img/tw.png" alt="Twitter Logo" width="20px"> Twitter
-                </a>
-            </li>
-            <li>
-                <a href="https://www.instagram.com/todhq-placeholder" target="_blank">
-                    <img src="img/inst.png" alt="Instagram Logo" width="20px"> Instagram
-                </a>
-            </li>
-        </ul>
-    </section>
+    <section id="contact-method">
+        <section>
+            <p>You can also reach out to us directly at:</p>
+            <ul>
+                <li>
+                    <img src="img/email-icon.png" alt="Email Icon" class="contact-icon" width="20px">
+                    Email: support@todhq.com
+                </li>
+                <li>
+                    <img src="img/phone-icon.png" alt="Phone Icon" class="contact-icon" width="20px">
+                    Phone: (123) 456-7890
+                </li>
+            </ul>
 
-    <!-- Footer -->
-    <footer>
-        <p>Thank you for being a part of the TodHQ community. We look forward to hearing from you!</p>
-    </footer>
+            <!-- <p>Follow and message us on our social media channels:</p>
+            <ul>
+                <li>
+                    <a href="https://www.facebook.com/todhq-placeholder" target="_blank">
+                        <img src="img/fb.png" alt="Facebook Logo" width="20px"> Facebook
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/todhq-placeholder" target="_blank">
+                        <img src="img/tw.png" alt="Twitter Logo" width="20px"> Twitter
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/todhq-placeholder" target="_blank">
+                        <img src="img/inst.png" alt="Instagram Logo" width="20px"> Instagram
+                    </a>
+                </li>
+            </ul> -->
+        </section>
+        </section>
+    <iframe src="footer.html" frameborder="0" scrolling="no" width="100%" height="150px"></iframe>
 
 </body>
 

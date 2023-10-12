@@ -3,28 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-    <title>TodHQ</title>
+    <title>Navbar - TodHQ</title>
+    <style>
+        /* Internal Styles for Navbar */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            /* Hide scrollbars when embedded */
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-links,
+        .auth-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-item,
+        .auth-item {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item:hover,
+        .auth-item:hover {
+            color: #ff4500;
+        }
+
+        /* Authentication Button Styles */
+        .btn-signin,
+        .btn-signup {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-signin {
+            background-color: #fff;
+            border: 2px solid #ff4500;
+            color: #ff4500;
+        }
+
+        .btn-signup {
+            background-color: #ff4500;
+            color: #fff;
+        }
+
+        .btn-signin:hover {
+            background-color: #ff4500;
+            color: #fff;
+        }
+
+        .btn-signup:hover {
+            background-color: #ff6347;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 90%;
+            /* Position below the dropdown toggle */
+            left: 0;
+            z-index: 1;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-content a {
+            color: #555;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #eee;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-toggle:hover {
+            color: #ff4500;
+        }
+    </style>
 </head>
+
 <body>
-    <nav>
+
+    <nav class="navigation">
         <div class="logo">
             <img src="img/logo.png" alt="Daycare Logo" id="navbar-logo">
         </div>
-    
+
         <div class="nav-links">
-            <a target="_parent" href="index.html">Home</a>
-            <a target="_parent" href="about.html">About Us</a>
-            <a target="_parent" href="#services">Services</a>
-            <a target="_parent" href="blog.html">Our Blog</a>
-            <a target="_parent" href="contact.html">Contact Us</a>
+            <a href="index.html" class="nav-item" target="_top">Home</a>
+            <a href="about.html" class="nav-item" target="_top">About Us</a>
+
+            <!-- Services Dropdown -->
+            <div class="dropdown">
+                <a href="#services" class="nav-item dropdown-toggle">Services</a>
+                <div class="dropdown-content">
+                    <a href="#service1" target="_top">DayCare</a>
+                    <a href="#service2" target="_top">Volunteer</a>
+                    <!-- Add more services as needed -->
+                </div>
+            </div>
+
+            <a href="blog.html" class="nav-item" target="_top">Our Blog</a>
+            <a href="contact.html" class="nav-item" target="_top">Contact Us</a>
         </div>
-    
         <div class="auth-links">
-            <a target="_parent" href="#signin">Sign In</a>
-            <a target="_parent" href="#signup">Sign Up</a>
+            <a href="#signin" class="auth-item btn-signin">Sign In</a>
+            <a href="#signup" class="auth-item btn-signup">Sign Up</a>
         </div>
     </nav>
+
 </body>
+
 </html>
