@@ -11,7 +11,7 @@
         /* Base styles */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #FAF3E0;
+            /* background-color: #FAF3E0; */
             /* Soft beige background */
             color: #333;
             /* Dark text for contrast */
@@ -25,7 +25,7 @@
         }
 
         header {
-            background-color: #9fc8ff;
+            /* background-color: #9fc8ff; */
             /* Peachy header background */
             padding: 50px;
             text-align: center;
@@ -140,6 +140,10 @@
             margin-right: 10px;
         }
 
+        #form-section{
+            background-color: #eeecf4;
+        }
+
         #contact-method {
             text-align: center;
         }
@@ -150,51 +154,34 @@
     <iframe src="navbar.html" frameborder="0" scrolling="no" width="100%"></iframe>
 
     <!-- Header -->
-    <header id="about-content">
-        <h1>Join TodHQ!</h1>
-    </header>
+    <!-- <header id="about-content">
+    </header> -->
 
     <!-- Introduction -->
     <section id="about-content">
+        <h1>Join TodHQ!</h1>
         <p>Welcome to TodHQ! Join our community and bridge the gap between parents and trusted family-run daycares.</p>
     </section>
 
     <!-- Signup Form -->
-    <section>
+    <section id="form-section">
         <form action="submit_signup.php" method="post">
-                <!-- User Role Selection -->
-                <fieldset>
-                    <legend>Who are you?</legend>
-                    <input type="radio" id="parent" name="userRole" value="parent" onclick="redirectTo('parent_signup.html');" required>
-                    <label for="parent">Parent</label><br>
-        
-                    <input type="radio" id="volunteer" name="userRole" value="volunteer" onclick="redirectTo('volunteer.html');">
-                    <label for="volunteer">Volunteer</label><br>
-        
-                    <input type="radio" id="daycareowner" name="userRole" value="daycareowner" onclick="redirectTo('daycareowners.html');">
-                    <label for="daycareowner">Daycare Owner</label>
-                </fieldset>
-            </form>
-        </section>
-        
-        <!-- Alternative Sign In Methods -->
-        <section id="contact-method">
-            <section>
-                <p>Already have an account? <a href="signin.html">Sign In here</a></p>
-            </section>
-        </section>
-        
-        <iframe src="footer.html" frameborder="0" scrolling="no" width="100%" height="150px"></iframe>
-        
-        <script>
-            function redirectTo(page) {
-                window.location.href = page;
-            }
-        </script>
-        </body>
-        
-        </html>
-        
+            <!-- User Role Selection -->
+            <fieldset>
+                <legend>Who are you?</legend>
+                <input type="radio" id="parent" name="userRole" value="parent"
+                    onclick="redirectTo('parent_signup.html');" required>
+                <label for="parent">Parent</label><br>
+
+                <input type="radio" id="volunteer" name="userRole" value="volunteer"
+                    onclick="redirectTo('volunteer.html');">
+                <label for="volunteer">Volunteer</label><br>
+
+                <input type="radio" id="daycareowner" name="userRole" value="daycareowner"
+                    onclick="redirectTo('daycareowners.html');">
+                <label for="daycareowner">Daycare Owner</label>
+            </fieldset>
+        </form>
     </section>
 
     <!-- Alternative Sign In Methods -->
@@ -205,6 +192,12 @@
     </section>
 
     <iframe src="footer.html" frameborder="0" scrolling="no" width="100%" height="150px"></iframe>
+
+    <script>
+        function redirectTo(page) {
+            window.location.href = page;
+        }
+    </script>
 </body>
 
 </html>
