@@ -151,7 +151,7 @@
 </head>
 
 <body>
-    <iframe src="navbar.html" frameborder="0" scrolling="no" width="100%"></iframe>
+    {% include 'navbar.html' %}
 
     <!-- Header -->
     <!-- <header id="about-content">
@@ -187,11 +187,11 @@
     <!-- Alternative Sign In Methods -->
     <section id="contact-method">
         <section>
-            <p>Already have an account? <a href="signin.html">Sign In here</a></p>
+            <p>Already have an account? <a href="{{ url_for('signin') }}">Sign In here</a></p>
         </section>
     </section>
 
-    <iframe src="footer.html" frameborder="0" scrolling="no" width="100%" height="150px"></iframe>
+    {% include 'footer.html' %}
 
     <script>
         function redirectTo(page) {

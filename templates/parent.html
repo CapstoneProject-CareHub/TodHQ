@@ -129,13 +129,13 @@
 </head>
 
 <body>
-    <iframe src="navbar.html" frameborder="0" scrolling="no" width="100%"></iframe>
+    {% include 'navbar.html' %}
 
     <div id="main-container">
         <!-- Image Section -->
         <div id="image-container">
             <h1>Welcome to our daycare service!</h1>
-            <img src="img/Parent_form.jpg" class="volunteer2" width="100%">
+            <img src="{{ url_for('static', filename='images/Parent_form.jpg') }}" class="volunteer2" width="100%">
         </div>
 
         <!-- Signup Form Section -->
@@ -165,7 +165,7 @@
         </div>
     </div>
 
-    <iframe src="footer.html" frameborder="0" scrolling="no" width="100%" height="150px"></iframe>
+    {% include 'footer.html' %}
 </body>
 
 </html>

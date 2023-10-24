@@ -129,7 +129,7 @@
         <!-- Header -->
         <header id="volunteer-content">
             <h1>Become a Volunteer at TodHQ!</h1>
-            <img src="img/volunteer2.jpg" alt="Volunteer at a daycare" class="volunteer2" width="700px">
+            <img src="{{ url_for('static', filename='images/volunteer2.jpg') }}" alt="Volunteer at a daycare" class="volunteer2" width="700px">
         </header>
 
     <!-- Introduction -->
@@ -182,7 +182,7 @@
         </form>
     </section>
     </div>
-    <iframe src="footer.html" frameborder="0" scrolling="no" width="100%" height="150px"></iframe>
+    {% include 'footer.html' %}
 </body>
 
 </html>

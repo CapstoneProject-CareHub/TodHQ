@@ -10,7 +10,7 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            overflow: none;
             /* Hide scrollbars when embedded */
         }
 
@@ -123,29 +123,29 @@
 
     <nav class="navigation">
         <div class="logo">
-            <img src="img/logo.png" alt="Daycare Logo" id="navbar-logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Daycare Logo" id="navbar-logo">
         </div>
 
         <div class="nav-links">
-            <a href="index.html" class="nav-item" target="_top">Home</a>
-            <a href="about.html" class="nav-item" target="_top">About Us</a>
+            <a href="{{ url_for('index') }}" class="nav-item" target="_top">Home</a>
+            <a href="{{ url_for('about') }}" class="nav-item" target="_top">About Us</a>
 
             <!-- Services Dropdown -->
             <div class="dropdown">
                 <a href="#services" class="nav-item dropdown-toggle">Services</a>
                 <div class="dropdown-content">
-                    <a href="services.html" target="_top">Find a Care</a>
+                    <a href="{{ url_for('services') }}" target="_top">Find a Care</a>
                     <a href="#service2" target="_top">Provide a Care</a>
                     <!-- Add more services as needed -->
                 </div>
             </div>
 
-            <a href="blog.html" class="nav-item" target="_top">Our Blog</a>
-            <a href="contact.html" class="nav-item" target="_top">Contact Us</a>
+            <a href="{{ url_for('blog') }}" class="nav-item" target="_top">Our Blog</a>
+            <a href="{{ url_for('contact') }}" class="nav-item" target="_top">Contact Us</a>
         </div>
         <div class="auth-links">
-            <a href="signin.html" class="auth-item btn-signin" target="_top">Sign In</a>
-            <a href="signup.html" class="auth-item btn-signup" target="_top">Sign Up</a>
+            <a href="{{ url_for('signin') }}" class="auth-item btn-signin" target="_top">Sign In</a>
+            <a href="{{ url_for('signup') }}" class="auth-item btn-signup" target="_top">Sign Up</a>
         </div>
     </nav>
 

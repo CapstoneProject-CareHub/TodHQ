@@ -148,7 +148,7 @@
 </head>
 
 <body>
-    <iframe src="navbar.html" frameborder="0" scrolling="no" width="100%"></iframe>
+    {% include 'navbar.html' %}
 
     <!-- Header -->
     <header id="about-content">
@@ -193,36 +193,18 @@
             <p>You can also reach out to us directly at:</p>
             <ul>
                 <li>
-                    <img src="img/email-icon.png" alt="Email Icon" class="contact-icon" width="20px">
+                    <img src="{{ url_for('static', filename='images/email-icon.png') }}" alt="Email Icon" class="contact-icon" width="20px">
                     Email: support@todhq.com
                 </li>
                 <li>
-                    <img src="img/phone-icon.png" alt="Phone Icon" class="contact-icon" width="20px">
+                    <img src="{{ url_for('static', filename='images/phone-icon.png') }}"  alt="Phone Icon" class="contact-icon" width="20px">
                     Phone: (123) 456-7890
                 </li>
             </ul>
 
-            <!-- <p>Follow and message us on our social media channels:</p>
-            <ul>
-                <li>
-                    <a href="https://www.facebook.com/todhq-placeholder" target="_blank">
-                        <img src="img/fb.png" alt="Facebook Logo" width="20px"> Facebook
-                    </a>
-                </li>
-                <li>
-                    <a href="https://twitter.com/todhq-placeholder" target="_blank">
-                        <img src="img/tw.png" alt="Twitter Logo" width="20px"> Twitter
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.instagram.com/todhq-placeholder" target="_blank">
-                        <img src="img/inst.png" alt="Instagram Logo" width="20px"> Instagram
-                    </a>
-                </li>
-            </ul> -->
         </section>
         </section>
-    <iframe src="footer.html" frameborder="0" scrolling="no" width="100%" height="150px"></iframe>
+        {% include 'footer.html' %}
 
 </body>
 

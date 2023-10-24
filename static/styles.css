@@ -1,0 +1,179 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fffefe;
+}
+.result-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a perimeter shadow */
+    transform: translateY(-5px); /* Elevate the results */
+  }
+
+  .search-label {
+    font-family: "Arial", sans-serif;
+    font-size: 16px;
+}
+
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 90px;
+}
+
+.search-results-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+.search-box {
+    flex: 1;
+    padding-right: 50px;
+}
+.search-box a{
+    color: black;
+}
+
+.image-box {
+    flex: 1;
+}
+
+.image-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+.search-fields {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group select, .input-group input {
+    padding: 10px;
+    flex: 1;
+}
+
+button {
+    background-color: #2E3131;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #e1d3f8;
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+  
+  .hero-images {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .hero-images img {
+    width: 300px;
+    height: auto;
+    margin: 0 20px;
+  }
+  
+  /* Quality Assurance Section */
+  .quality-assurance {
+    background-color: #fff;
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .quality-assurance h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .quality-assurance p {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+  
+  .quality-assurance ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .quality-assurance li {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .quality-assurance li strong {
+    font-weight: bold;
+  }
+  
+  /* CTA (Call To Action) Section */
+  .cta {
+    background-color: #e1d3f8;
+    padding: 50px;
+    text-align: center;
+    
+  }
+  
+  .cta h3 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .cta p {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+  
+  .cta button {
+    background-color: #b8b5b5;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .cta button a{
+    color: #040000;
+    text-decoration: none;
+  }
+  .cta button:hover {
+    background-color: #9a9797;
+  }
+
+iframe {
+  border: none; /* To remove any default borders from the iframe */
+  width: 100%;  /* Ensure the iframe takes the full width of its container */
+  overflow: hidden; /* To hide scrollbars */
+  display: block; /* To remove any default spacing below the iframe */
+}

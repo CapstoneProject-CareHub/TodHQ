@@ -23,7 +23,7 @@
         }
 
         header {
-            background-image: url('img/dc2.jpg');
+            background-image: url_for('static', filename='images/dc2.jpg');
             /* Add the URL of your header image */
             background-size: cover;
             background-position: center;
@@ -72,7 +72,7 @@
 </head>
 
 <body>
-    <iframe src="navbar.html" frameborder="0" scrolling="yes" width="100%"></iframe>
+    {% include 'navbar.html' %}
     <header>
         <h1>A Day in the Life of a Daycare Provider</h1>
     </header>
@@ -140,7 +140,7 @@
                 and providing parents with the peace of mind they need.</p>
         </article>
     </div>
-    <iframe src="footer.html" frameborder="0" scrolling="no" width="100%" height="150px"></iframe>
+    {% include 'footer.html' %}
 </body>
 
 </html>

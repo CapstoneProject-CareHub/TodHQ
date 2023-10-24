@@ -90,12 +90,10 @@
 </head>
 
 <body>
-    <iframe src="navbar.html" frameborder="0" width="100%"></iframe>
-
+    {% include 'navbar.html' %}
     <div id="about-content">
         <h1 class="title">About Us</h1>
-        <img src="img/about-image.jpg" alt="Children playing at a daycare" class="about-image" width="700px">
-
+        <img src="{{ url_for('static', filename='images/about-image.jpg') }}" alt="Children playing at a daycare" class="about-image" width="700px">
 
         <p class="intro-text">
             Welcome to TodHQ! Our website is a search engine dedicated to providing information about daycares that are family-owned and run within a house. We understand the importance of finding a safe and nurturing environment for your little ones, and our mission is to connect parents with trusted family-run daycares in their community.
@@ -105,26 +103,25 @@
         <p class="info-text">
             Family-run daycares offer a more personalized touch, ensuring that every child gets the attention they deserve. Unlike larger institutions, these home-based daycares provide a warm and cozy environment, closely mirroring the comfort of one's own home. 
         </p>
-        <img src="img/family-run-daycare.jpg" alt="A family-run daycare environment" class="info-image" width="700px">
+        <img src="{{ url_for('static', filename='images/family-run-daycare.jpg') }}" alt="A family-run daycare environment" class="info-image" width="700px">
 
         <h2 class="subtitle">Our Quality Standards</h2>
         <p class="info-text">
             At TodHQ, quality is paramount. We meticulously vet each daycare listing, ensuring they meet our high standards for safety, care, and learning. Additionally, our community of parents often share reviews and experiences, providing an added layer of trust and transparency.
         </p>
-        <img src="img/quality-standards.jpg" alt="Children learning and having fun" class="info-image" width="700px">
+        <img src="{{ url_for('static', filename='images/quality-standards.jpg') }}" alt="Children learning and having fun" class="info-image" width="700px">
 
         <h2 class="subtitle">Diverse Learning Opportunities</h2>
         <p class="info-text">
             Beyond safety and comfort, we believe in the power of learning. Many of our listed daycares offer diverse learning programs, from arts and crafts to foundational math and reading skills. Encouraging holistic development is at the heart of what we do.
         </p>
-        <img src="img/learning-opportunities.jpg" alt="Child painting at a daycare" class="info-image" width="700px">
-         
+        <img src="{{ url_for('static', filename='images/learning-opportunities.jpg') }}" alt="Child painting at a daycare" class="info-image" width="700px">
+        
         <br>
 
         <button id="go-back" onclick="window.history.back();" class="back-button">Go Back</button>
     </div>
-    <iframe src="footer.html" frameborder="0" scrolling="no" width="100%" height="150px"></iframe>
-
+    {% include 'footer.html' %}
 </body>
 
 </html>

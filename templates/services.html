@@ -93,7 +93,7 @@
 </head>
 
 <body>
-    <iframe src="navbar.html" frameborder="0" scrolling="yes" width="100%"></iframe>
+    {% include 'navbar.html' %}
     <div class="search-container">
         <div class="search-box">
             <h1>Find High-quality, trusted daycare providers nearby.</h1>
@@ -113,7 +113,7 @@
             <button type="submit">Search</button>
         </div>
         <div class="image-box">
-            <img src="img/service1.jpg" alt="Illustration of Child Care">
+            <img src="{{ url_for('static', filename='images/service1.jpg') }}" alt="Illustration of Child Care">
         </div>
     </div>
 
@@ -128,26 +128,26 @@
             If you're a parent searching for high-quality daycare services, our platform provides you with a user-friendly search feature. You can find daycare providers based on your location and the specific services you require. Simply enter your zip code and the type of service you're looking for, and you'll receive a list of trusted daycare providers in your area. 
         </p>
         <p>Our platform allows you to filter your search results based on various criteria, including location, services offered, and caregiver qualifications. This makes it easy to find the ideal daycare provider that meets your child's needs.</p>
-        <img src="img/family-run-daycare.jpg" alt="A family-run daycare environment" class="info-image" width="700px">
+        <img src="{{ url_for('static', filename='images/family-run-daycare.jpg') }}" alt="A family-run daycare environment" class="info-image" width="700px">
 
         <h2 class="subtitle">You are a Caregiver?</h2>
         <p class="info-text">
          If you're a daycare owner or caregiver, our platform offers you the opportunity to create a profile that showcases your services and qualifications. By creating a profile, you can reach a wider audience of parents seeking daycare services.
         </p>
-        <img src="img/quality-standards.jpg" alt="Children learning and having fun" class="info-image" width="700px">
+        <img src="{{ url_for('static', filename='images/quality-standards.jpg') }}" alt="Children learning and having fun" class="info-image" width="700px">
         <p>Once your profile is set up, it will appear in search results when parents search for daycare providers in your area. This visibility can significantly increase your chances of connecting with families in need of your services.</p>
         <p>Our platform aims to simplify the process of finding and offering daycare services, fostering a sense of community and trust among parents and caregivers. We believe that every child deserves high-quality care and education, and our platform is dedicated to making that a reality.</p>
 
         <h3 class="section-heading">Get Started Today</h3>
         <p>Whether you're a parent in search of the perfect daycare provider or a caregiver looking to offer your services, our platform is here to facilitate the connection. Join our community and begin your journey toward quality daycare services and meaningful relationships.</p>
-        <p>If you have any questions or need assistance, feel free to <a href="contact.html">contact us</a>. We're here to help!</p>
+        <p>If you have any questions or need assistance, feel free to <a href="{{ url_for('contact') }}">contact us</a>. We're here to help!</p>
 
         <br>
 
         <button id="go-back" onclick="window.history.back();" class="back-button">Go Back</button>
         
     </div>
-    <iframe src="footer.html" frameborder="0" scrolling="no" width="100%" height="150px"></iframe>
+    {% include 'footer.html' %}
 
 </body>
 

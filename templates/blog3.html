@@ -23,7 +23,7 @@
         }
 
         header {
-            background-image: url('img/fun.jpg');
+            background-image: url_for('static', filename='images/blog1.jpg');
             /* Add the URL of your header image */
             background-size: cover;
             background-position: center;
@@ -73,7 +73,7 @@
 </head>
 
 <body>
-    <iframe src="navbar.html" frameborder="0" scrolling="no" seamless="seamless" width="100%"></iframe>
+    {% include 'navbar.html' %}
     <header>
         <h1>Fun and Educational Activities for Toddlers at Home</h1>
     </header>
@@ -144,7 +144,7 @@
                 of learning and discovery together.</p>
         </article>
     </div>
-    <iframe src="footer.html" frameborder="0" scrolling="no" width="100%" height="150px"></iframe>
+    {% include 'footer.html' %}
 </body>
 
 </html>

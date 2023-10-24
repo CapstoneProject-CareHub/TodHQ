@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <title>TodHQ</title>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    <div class="search-container">
+        <div class="search-box">
+            <h1>Find High-quality, trusted daycare providers nearby.</h1>
+            <div class="search-fields">
+                <div class="input-group">
+                    <input type="text" id="searchInput" placeholder="Zip Code">
+                </div>
+            </div>
+            <button onclick="performSearch()">Find Child Care</button>
+            <br>
+            <br>
+            <button>I'm a child care provider</button>
+        </div>
+        <div class="image-box">
+            <img src="{{ url_for('static', filename='images/fun.jpg') }}" alt="Illustration of Child Care">
+        </div>
+
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to TodHQ</h1>
+        <p>Your trusted platform for finding quality daycares in your vicinity.</p>
+
+        <!-- Place for an image or a carousel -->
+        <div class="hero-images">
+            <!-- You can place an image carousel or multiple images here -->
+            <img src="{{ url_for('static', filename='images/dc.jpg') }}" alt="Daycare Image 1">
+            <img src="{{ url_for('static', filename='images/dc2.jpg') }}" alt="Daycare Image 2">
+        </div>
+    </section>
+
+    <!-- Quality Assurance Section -->
+    <section class="quality-assurance">
+        <h2>Our Commitment to Quality</h2>
+        <p>We understand the importance of entrusting your child to a daycare. That's why we take utmost care in listing
+            only the best daycares that meet our stringent quality standards. Here's what makes us stand out:</p>
+
+        <ul>
+            <li><strong>Vetted Providers:</strong> Every daycare listed on our platform undergoes a thorough background
+                check and review.</li>
+            <li><strong>Trained Professionals:</strong> We ensure that each daycare is staffed with professionals who
+                are qualified and trained in early childhood education.</li>
+            <li><strong>Feedback System:</strong> Browse through authentic reviews from parents who have experienced the
+                services firsthand.</li>
+            <li><strong>Safe & Hygienic:</strong> Safety and hygiene are our top priorities. We guarantee clean, secure,
+                and child-friendly environments.</li>
+        </ul>
+    </section>
+
+    <!-- CTA (Call To Action) Section -->
+    <section class="cta">
+        <h3>Discover the Perfect Daycare for Your Child</h3>
+        <p>Join our community and give your child the best start in life. Browse our curated list of daycares now.</p>
+        <button><a href="{{ url_for('index') }}">Browse Daycares</a></button>
+    </section>
+
+    {% include 'footer.html' %}
+</body>
+
+</html>
+

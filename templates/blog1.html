@@ -19,7 +19,7 @@
         }
 
         header {
-            background-image: url('img/blog1.jpg');
+            background-image: url_for('static', filename='images/blog1.jpg');
             /* Add the URL of your header image */
             background-size: cover;
             background-position: center;
@@ -75,7 +75,7 @@
     </style>
 </head>
 <body>
-    <iframe src="navbar.html" frameborder="0" scrolling="yes" width="100%" ></iframe>
+    {% include 'navbar.html' %}
     <header>
         <h1>The Importance of Finding the Right Daycare for Your Child</h1>
     </header>
@@ -100,7 +100,7 @@
         </article>
         <button onclick="window.history.back();">Go Back</button>
     </div>
-    <iframe src="footer.html" frameborder="0" scrolling="no" width="100%" height="150px"></iframe>
+    {% include 'footer.html' %}
 
 </body>
 </html>
