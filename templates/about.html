@@ -32,12 +32,11 @@
         /* About Content Styles */
         #about-content {
             /* max-width: 1200px; */
-            width: 100%;
-            margin: 30px auto;
-            padding: 0 20px;
+            /* width: 100%; */
+            /* margin: 30px auto; */
+            padding:15px  20px;
             background-color:rgb(243, 236, 243);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 40px;
         }
 
         .title {
@@ -51,9 +50,9 @@
         }
 
         .intro-text, .info-text {
-            font-size: 16px;
-            color: #777;
+            font-size: 18px;
             margin-top: 20px;
+            /* font-weight: bold; */
         }
 
         .about-image, .info-image {
@@ -85,6 +84,42 @@
             overflow: hidden;
             display: block;
         }
+        .intro-text{
+            text-align: center;
+            font-weight: bold;
+        }
+        #about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: rgb(243, 236, 243);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-section {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .info-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .info-text,
+        .info-image {
+            width: 48%;
+        }
+
+        .info-image {
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
     </style>
     <script src="script.js" defer></script>
 </head>
@@ -99,25 +134,26 @@
             Welcome to TodHQ! Our website is a search engine dedicated to providing information about daycares that are family-owned and run within a house. We understand the importance of finding a safe and nurturing environment for your little ones, and our mission is to connect parents with trusted family-run daycares in their community.
         </p>
 
-        <h2 class="subtitle">Why Choose Family-Run Daycares?</h2>
-        <p class="info-text">
-            Family-run daycares offer a more personalized touch, ensuring that every child gets the attention they deserve. Unlike larger institutions, these home-based daycares provide a warm and cozy environment, closely mirroring the comfort of one's own home. 
-        </p>
-        <img src="{{ url_for('static', filename='images/family-run-daycare.jpg') }}" alt="A family-run daycare environment" class="info-image" width="700px">
+        <div class="info-section">
+            <img src="{{ url_for('static', filename='images/family-run-daycare.jpg') }}" alt="A family-run daycare environment" class="info-image">
+            <p class="info-text">
+                Family-run daycares offer a more personalized touch, ensuring that every child gets the attention they deserve. Unlike larger institutions, these home-based daycares provide a warm and cozy environment, closely mirroring the comfort of one's own home.
+            </p>
+        </div>
 
-        <h2 class="subtitle">Our Quality Standards</h2>
-        <p class="info-text">
-            At TodHQ, quality is paramount. We meticulously vet each daycare listing, ensuring they meet our high standards for safety, care, and learning. Additionally, our community of parents often share reviews and experiences, providing an added layer of trust and transparency.
-        </p>
-        <img src="{{ url_for('static', filename='images/quality-standards.jpg') }}" alt="Children learning and having fun" class="info-image" width="700px">
+        <div class="info-section reverse">
+            <img src="{{ url_for('static', filename='images/quality-standards.jpg') }}" alt="Children learning and having fun" class="info-image">
+            <p class="info-text">
+                At TodHQ, quality is paramount. We meticulously vet each daycare listing, ensuring they meet our high standards for safety, care, and learning. Additionally, our community of parents often share reviews and experiences, providing an added layer of trust and transparency.
+            </p>
+        </div>
 
-        <h2 class="subtitle">Diverse Learning Opportunities</h2>
-        <p class="info-text">
-            Beyond safety and comfort, we believe in the power of learning. Many of our listed daycares offer diverse learning programs, from arts and crafts to foundational math and reading skills. Encouraging holistic development is at the heart of what we do.
-        </p>
-        <img src="{{ url_for('static', filename='images/learning-opportunities.jpg') }}" alt="Child painting at a daycare" class="info-image" width="700px">
-        
-        <br>
+        <div class="info-section">
+            <img src="{{ url_for('static', filename='images/learning-opportunities.jpg') }}" alt="Child painting at a daycare" class="info-image">
+            <p class="info-text">
+                Beyond safety and comfort, we believe in the power of learning. Many of our listed daycares offer diverse learning programs, from arts and crafts to foundational math and reading skills. Encouraging holistic development is at the heart of what we do.
+            </p>
+        </div>
 
         <button id="go-back" onclick="window.history.back();" class="back-button">Go Back</button>
     </div>
