@@ -8,9 +8,10 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color:rgb(243, 236, 243);
+            background-color: rgb(243, 236, 243);
             margin: 0;
             padding: 0;
+
         }
 
         header {
@@ -46,49 +47,51 @@
             justify-content: space-between;
             padding: 50px;
         }
+
         .search-box {
-    flex: 1;
-    padding-right: 50px;
-}
-.search-box a{
-    color: black;
-}
-.image-box {
-    flex: 1;
-}
+            flex: 1;
+            padding-right: 50px;
+        }
 
-.image-box img {
-    max-width: 100%;
-    height: auto;
-}
+        .search-box a {
+            color: black;
+        }
 
-.search-fields {
-    display: flex;
-    gap: 20px;
-    margin: 20px 0;
-}
+        .image-box {
+            flex: 1;
+        }
 
-.hero-images {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .hero-images img {
-    width: 300px;
-    height: auto;
-    margin: 0 20px;
-  }
+        .image-box img {
+            max-width: 100%;
+            height: auto;
+        }
 
-  .content-section {
-    /* max-width: 1200px; */
-    width: 100%;
+        .search-fields {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .hero-images {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-images img {
+            width: 300px;
+            height: auto;
+            margin: 0 20px;
+        }
+
+        .content-section {
+            /* max-width: 1200px; */
+            width: 100%;
             margin: 30px auto;
             padding: 0 20px;
-            background-color:rgb(243, 236, 243);
+            background-color: rgb(243, 236, 243);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             padding: 40px;
-    }
-
+        }
     </style>
 </head>
 
@@ -120,32 +123,50 @@
     <div class="content-section">
         <h2>Welcome to Our Daycare Services Platform</h2>
         <p class="intro-text">
-            Our daycare services platform is designed to connect parents, daycare owners, and caregivers in a seamless and efficient way. Whether you're a parent looking for trusted daycare providers or a caregiver seeking to offer your services, our platform is here to help you.
+            Our daycare services platform is designed to connect parents, daycare owners, and caregivers in a seamless
+            and efficient way. Whether you're a parent looking for trusted daycare providers or a caregiver seeking to
+            offer your services, our platform is here to help you.
         </p>
 
         <h2 class="subtitle">Looking for a Caregiver?</h2>
         <p class="info-text">
-            If you're a parent searching for high-quality daycare services, our platform provides you with a user-friendly search feature. You can find daycare providers based on your location and the specific services you require. Simply enter your zip code and the type of service you're looking for, and you'll receive a list of trusted daycare providers in your area. 
+            If you're a parent searching for high-quality daycare services, our platform provides you with a
+            user-friendly search feature. You can find daycare providers based on your location and the specific
+            services you require. Simply enter your zip code and the type of service you're looking for, and you'll
+            receive a list of trusted daycare providers in your area.
         </p>
-        <p>Our platform allows you to filter your search results based on various criteria, including location, services offered, and caregiver qualifications. This makes it easy to find the ideal daycare provider that meets your child's needs.</p>
-        <img src="{{ url_for('static', filename='images/family-run-daycare.jpg') }}" alt="A family-run daycare environment" class="info-image" width="700px">
+        <p>Our platform allows you to filter your search results based on various criteria, including location, services
+            offered, and caregiver qualifications. This makes it easy to find the ideal daycare provider that meets your
+            child's needs.</p>
+        <img src="{{ url_for('static', filename='images/family-run-daycare.jpg') }}"
+            alt="A family-run daycare environment" class="info-image" width="700px">
 
         <h2 class="subtitle">You are a Caregiver?</h2>
         <p class="info-text">
-         If you're a daycare owner or caregiver, our platform offers you the opportunity to create a profile that showcases your services and qualifications. By creating a profile, you can reach a wider audience of parents seeking daycare services.
+            If you're a daycare owner or caregiver, our platform offers you the opportunity to create a profile that
+            showcases your services and qualifications. By creating a profile, you can reach a wider audience of parents
+            seeking daycare services.
         </p>
-        <img src="{{ url_for('static', filename='images/quality-standards.jpg') }}" alt="Children learning and having fun" class="info-image" width="700px">
-        <p>Once your profile is set up, it will appear in search results when parents search for daycare providers in your area. This visibility can significantly increase your chances of connecting with families in need of your services.</p>
-        <p>Our platform aims to simplify the process of finding and offering daycare services, fostering a sense of community and trust among parents and caregivers. We believe that every child deserves high-quality care and education, and our platform is dedicated to making that a reality.</p>
+        <img src="{{ url_for('static', filename='images/quality-standards.jpg') }}"
+            alt="Children learning and having fun" class="info-image" width="700px">
+        <p>Once your profile is set up, it will appear in search results when parents search for daycare providers in
+            your area. This visibility can significantly increase your chances of connecting with families in need of
+            your services.</p>
+        <p>Our platform aims to simplify the process of finding and offering daycare services, fostering a sense of
+            community and trust among parents and caregivers. We believe that every child deserves high-quality care and
+            education, and our platform is dedicated to making that a reality.</p>
 
         <h3 class="section-heading">Get Started Today</h3>
-        <p>Whether you're a parent in search of the perfect daycare provider or a caregiver looking to offer your services, our platform is here to facilitate the connection. Join our community and begin your journey toward quality daycare services and meaningful relationships.</p>
-        <p>If you have any questions or need assistance, feel free to <a href="{{ url_for('contact') }}">contact us</a>. We're here to help!</p>
+        <p>Whether you're a parent in search of the perfect daycare provider or a caregiver looking to offer your
+            services, our platform is here to facilitate the connection. Join our community and begin your journey
+            toward quality daycare services and meaningful relationships.</p>
+        <p>If you have any questions or need assistance, feel free to <a href="{{ url_for('contact') }}">contact us</a>.
+            We're here to help!</p>
 
         <br>
 
         <button id="go-back" onclick="window.history.back();" class="back-button">Go Back</button>
-        
+
     </div>
     {% include 'footer.html' %}
 
