@@ -105,35 +105,65 @@ button {
   
   /* Quality Assurance Section */
   .quality-assurance {
-    background-color: #fff;
-    padding: 50px;
-    text-align: center;
-  }
-  
-  .quality-assurance h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 50px 0;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+.quality-assurance h1 {
     font-size: 36px;
     margin-bottom: 20px;
-  }
-  
-  .quality-assurance p {
-    font-size: 18px;
-    margin-bottom: 40px;
-  }
-  
-  .quality-assurance ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .quality-assurance li {
+    text-align: center;
+}
+
+.quality-assurance p {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    text-align: center;
     font-size: 16px;
+    line-height: 1.5;
+}
+
+.info-box {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-  }
-  
-  .quality-assurance li strong {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.info-box .icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-box .icon img {
+    max-width: 100%;
+    display: block;
+}
+
+.info-box h3 {
+    font-size: 20px;
     font-weight: bold;
-  }
+    margin-bottom: 10px;
+}
+
+.info-box p {
+    padding-top: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
   
   /* CTA (Call To Action) Section */
   .cta {
