@@ -19,7 +19,7 @@
         }
 
         header {
-            background-image: url_for('static', filename='images/blog1.jpg');
+            background-image: url('{{ url_for('static', filename='images/blog1.jpg') }}');
             /* Add the URL of your header image */
             background-size: cover;
             background-position: center;
