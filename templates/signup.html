@@ -170,15 +170,15 @@
             <fieldset>
                 <legend>Who are you?</legend>
                 <input type="radio" id="parent" name="userRole" value="parent"
-                    onclick="redirectTo('parent_signup.html');" required>
+                    onclick="redirectTo('{{ url_for('parent') }}');" required>
                 <label for="parent">Parent</label><br>
 
                 <input type="radio" id="volunteer" name="userRole" value="volunteer"
-                    onclick="redirectTo('volunteer.html');">
+                    onclick="redirectTo('{{ url_for('volunteer') }}');">
                 <label for="volunteer">Volunteer</label><br>
 
                 <input type="radio" id="daycareowner" name="userRole" value="daycareowner"
-                    onclick="redirectTo('daycareowners.html');">
+                    onclick="redirectTo('{{ url_for('daycareowners') }}');">
                 <label for="daycareowner">Daycare Owner</label>
             </fieldset>
         </form>
