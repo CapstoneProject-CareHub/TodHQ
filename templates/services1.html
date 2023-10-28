@@ -65,30 +65,30 @@
 
         .image-box {
             flex: 1;
-            clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+            /* clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%); */
             /* -webkit-box-reflect: below 0px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.4)); */
         }
 
         .image-box img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
         }
 
         .info-image {
             width: 100%;
-            height: 300px;
+            height: 500px;
             border-radius: 10px;
             cursor: pointer;
             transition: 0.3s;
-            /* -webkit-box-reflect: right 0px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.4)); */
+            -webkit-box-reflect: right 0px linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4));
         }
 
-        .info-image:hover {
-            transform: scale(1.05);
-            /* Add scaling effect on hover */
-            height: auto;
-            opacity: 0.7;
-        }
+        /* .info-image:hover {
+            /* transform: scale(1.05); */
+        /* Add scaling effect on hover */
+        /* height: auto;
+            opacity: 0.7; */
+        /* } */
 
         .info-image-container {
             width: 50%;
@@ -103,7 +103,7 @@
             color: rgb(88, 87, 87);
         }
 
-        img,
+        /* img, */
         .content-section {
             max-width: 90%;
             width: auto;
@@ -138,33 +138,64 @@
             width: 45%;
             /* Adjust the width as needed */
         }
+
+        .how-it-works,
+        .registration-form {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2,
+        .registration-form h2 {
+            font-size: 24px;
+            margin-top: 0;
+        }
+
+        .registration-form form {
+            display: grid;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #0072b5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005f8d;
+        }
     </style>
 </head>
 
 <body>
     {% include 'navbar.html' %}
-    <div class="search-container">
-        <div class="search-box">
-            <h1>Find High-quality, trusted daycare providers nearby.</h1>
-            <div class="search-fields">
-                <label for="location">Zip Code:</label>
-                <input type="text" id="location" name="location" placeholder="Zip Code">
-                <label for="services">Services:</label>
-                <select id="services" name="services">
-                    <option value="">Select a service</option>
-                    <option value="Service A">Volunteer</option>
-                    <option value="Service B">Daycare Provider</option>
-                    <option value="Service C">Babysitter</option>
-                </select>
-                <!-- <label for="qualifications">Qualifications:</label>
-                <input type="text" id="qualifications" name="qualifications" placeholder="Enter qualifications"> -->
-            </div><br>
-            <button type="submit">Search</button>
-        </div>
-        <div class="image-box">
-            <img src="{{ url_for('static', filename='images/service1.jpg') }}" alt="Illustration of Child Care">
-        </div>
+    <div class="image-box">
+        <img src="{{ url_for('static', filename='images/volunteer.png') }}" alt="Illustration of Child Care">
     </div>
+
 
     <div class="content-section">
         <h2>Welcome to Our Daycare Services Platform</h2>
@@ -176,49 +207,59 @@
 
         <div class="content-wrapper even">
             <div class="info-image-container">
-                <img src="{{ url_for('static', filename='images/care.jpg') }}" alt="A family-run daycare environment"
-                    class="info-image" width="700px">
+                <img src="{{ url_for('static', filename='images/babysitter.jpg') }}"
+                    alt="A family-run daycare environment" class="info-image" width="600px">
             </div>
             <div class="content-block">
-                <h2 class="subtitle">Looking for a Caregiver?</h2>
+                <h2 class="subtitle">Register as a Volunteer or Babysitter</h2>
                 <p class="info-text">
-                    If you're a parent searching for high-quality daycare services, our platform provides you with a
-                    user-friendly search feature. You can find daycare providers based on your location and the specific
-                    services you require. Simply enter your zip code and the type of service you're looking for, and
-                    you'll receive a list of trusted daycare providers in your area.
+                    Sign up as a volunteer or babysitter. Fill out your details in the registration form.
+                    Once approved, your profile will be visible to parents seeking help.
+                    Parents can contact you through the platform.
+                    It's a simple and convenient way to connect with parents in need of childcare.
                 </p>
             </div>
         </div>
 
-        <div class="content-wrapper">
-            <div class="content-block">
-                <h2 class="subtitle">You are a Caregiver?</h2>
-                <p class="info-text">
-                    If you're a daycare owner or caregiver, our platform offers you the opportunity to create a profile
-                    that showcases your services and qualifications. By creating a profile, you can reach a wider
-                    audience of parents seeking daycare services.
-                </p>
-                <br>
-            </div>
-            <div class="info-image-container">
-                <img src="{{ url_for('static', filename='images/quality-standards.jpg') }}"
-                    alt="Children learning and having fun" class="info-image" width="700px">
-            </div>
-        </div>
         <p class="info-text">Once your profile is set up, it will appear in search results when parents search for
             daycare providers in your area. This visibility can significantly increase your chances of connecting with
             families in need of your services.
-            <br>Our platform aims to simplify the process of finding and offering daycare services, fostering a sense of
-            community and trust among parents and caregivers. We believe that every child deserves high-quality care and
-            education, and our platform is dedicated to making that a reality.
-        </p>
+            <br>
+
+        <section class="registration-form">
+            <h2>Registration Form</h2>
+            <form action="submit_volunteer.php" method="post">
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" required>
+
+                <label for="ssn">Social Security Number (SS#):</label>
+                <input type="password" id="ssn" name="ssn" required placeholder="XXX-XX-XXXX">
+
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required min="18">
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" name="phone" required>
+
+                <label for="location">Location:</label>
+                <input type="text" name="location" required>
+
+                <label for="experience">Experience (if any):</label>
+                <textarea name="experience" rows="4"></textarea>
+
+                <label for="availability">Availability:</label>
+                <input type="text" name="availability" required>
+
+                <input type="submit" value="Register">
+            </form>
+        </section>
         <br>
-
         <button id="go-back" onclick="window.history.back();" class="back-button">Go Back</button>
-
     </div>
     {% include 'footer.html' %}
-
 
 </body>
 

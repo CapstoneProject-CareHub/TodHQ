@@ -19,7 +19,7 @@
             justify-content: space-between;
             align-items: center;
             /* padding: 10px; */
-            background-color: #dffdff;
+            background-color: #eedbf5;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
@@ -46,7 +46,7 @@
 
         .nav-item:hover,
         .auth-item:hover {
-            color: #bdb2ff;
+            color: #816ef0;
         }
 
         /* Authentication Button Styles */
@@ -98,10 +98,11 @@
             background-color: #f9f9f9;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             width: 150px;
+            padding: 10px;
         }
 
         .dropdown-content a {
-            color: #555;
+            color: #8b94e7;
             padding: 10px 20px;
             text-decoration: none;
             display: block;
@@ -138,7 +139,7 @@
                 <a href="#services" class="nav-item dropdown-toggle">Services</a>
                 <div class="dropdown-content">
                     <a href="{{ url_for('services') }}" target="_top">Find a Care</a>
-                    <a href="#service2" target="_top">Provide a Care</a>
+                    <a href="{{ url_for('services1') }}" target="_top">Provide a Care</a>
                     <!-- Add more services as needed -->
                 </div>
             </div>
