@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar - TodHQ</title>
+    <style>
+        /* Internal Styles for Navbar */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: none;
+            /* Hide scrollbars when embedded */
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* padding: 10px; */
+            background-color: #eedbf5;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            height: 70px;   
+            padding: 15px 10px 15px 50px; 
+        }
+
+        .nav-links,
+        .auth-links {
+            display: flex;
+            gap: 50px;
+            font-size: 17px;
+        }
+        
+        .nav-item,
+        .auth-item {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.3s ease;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .nav-item:hover,
+        .auth-item:hover {
+            color: #816ef0;
+        }
+
+        /* Authentication Button Styles */
+        .btn-signin,
+        .btn-signup {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-signin {
+            background-color: #fff;
+            border: 2px solid #bdb2ff;
+            color: #bdb2ff;
+        }
+
+        .btn-signup {
+            background-color: #bdb2ff;
+            color: #fff;
+            margin-right: 25px;
+        }
+
+        .btn-signin:hover {
+            background-color: #bdb2ff;
+            color: #fff;
+        }
+
+        .btn-signup:hover {
+            background-color: #fff;
+            border: 2px solid #bdb2ff;
+
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 90%;
+            /* Position below the dropdown toggle */
+            left: 0;
+            z-index: 1;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 150px;
+            padding: 10px;
+        }
+
+        .dropdown-content a {
+            color: #8b94e7;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #eee;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-toggle:hover {
+            color: #bdb2ff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navigation">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Daycare Logo" id="navbar-logo">
+        </div>
+
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}" class="nav-item" target="_top">Home</a>
+            <a href="{{ url_for('about') }}" class="nav-item" target="_top">About Us</a>
+
+            <!-- Services Dropdown -->
+            <div class="dropdown">
+                <a href="#services" class="nav-item dropdown-toggle">Services</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('services') }}" target="_top">Find a Care</a>
+                    <a href="{{ url_for('services1') }}" target="_top">Provide a Care</a>
+                    <!-- Add more services as needed -->
+                </div>
+            </div>
+
+            <a href="{{ url_for('blog') }}" class="nav-item" target="_top">Our Blog</a>
+            <a href="{{ url_for('contact') }}" class="nav-item" target="_top">Contact Us</a>
+        </div>
+        <div class="auth-links">
+            <a href="{{ url_for('signin') }}" class="auth-item btn-signin" target="_top">Sign In</a>
+            <a href="{{ url_for('signup') }}" class="auth-item btn-signup" target="_top">Sign Up</a>
+        </div>
+    </nav>
+
+</body>
+
+</html>

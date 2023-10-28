@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Signup - TodHQ</title>
+    <style>
+        /* Internal CSS for About Page */
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* About Content Styles */
+        #parent-content {
+            flex: 1; /* Take available space, but not more than its content width */
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px; /* Optional: added for smoother corners */
+        }
+        
+        .title {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 28px;
+            margin-top: 40px;
+        }
+
+        .intro-text, .info-text {
+            font-size: 16px;
+            color: #777;
+            margin-top: 20px;
+        }
+        /*==========================*/
+        /* Container for all content */
+        /* Adjusting Main container layout */
+        #main-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        #image-container, #signup-container {
+            flex: 1 0 50%;
+            padding: 20px;
+            background-color: white;
+            margin-right: 20px; /* space between the image and the form */
+            box-shadow: 0 2px 4px rgba(105, 175, 140, 0.1);
+            border-radius: 10px;
+        }
+            /*
+        .volunteer-image, .info-image {
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: center;
+        }
+        */
+        #signup-form-background {
+            background-color: #e4e4e4;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #signup-container label, #signup-container input {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        
+        
+        /* Introduction styles */
+        #about-content p {
+            font-size: 1.2em; /* Slightly bigger font */
+            margin-top: 20px; /* Space between the image and the introduction */
+        }
+
+    
+        #signup-container input[type="submit"] {
+            padding: 10px 20px;      /* Adjust padding to increase size */
+            font-size: 1.2em;        /* Increase font size */
+            background-color: #40ac7981; /* Any color you prefer */
+            color: white;           /* Text color */
+            border: none;           /* Removes border */
+            border-radius: 5px;     /* Rounded corners */
+            cursor: pointer;        /* Changes mouse cursor on hover */
+        }
+        
+        #signup-container input[type="submit"]:hover {
+            background-color: #416c9c; /* Slightly darker shade for hover effect */
+        }
+        
+
+        
+
+        /* iFrame styles */
+        iframe {
+            border: none;
+            width: 100%;
+            overflow: hidden;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <div id="main-container">
+        <!-- Image Section -->
+        <div id="image-container">
+            <h1>Welcome to our daycare service!</h1>
+            <img src="{{ url_for('static', filename='images/Parent_form.jpg') }}" class="volunteer2" width="100%">
+        </div>
+
+        <!-- Signup Form Section -->
+        <div id="signup-container">
+            <section id="about-content"> 
+                <p>Let TodHQ guide you to the ideal daycare options for your child.</p>
+                <p>Please fill out the form below.</p>
+            </section>
+            
+            <div id="signup-form-background">
+                <form action="submit_parent.php" method="post">
+                    <label for="parent-name">Parent Name:</label>
+                    <input type="text" id="parent-name" name="parentName" required>
+
+                    <label for="num-children">Number of Children:</label>
+                    <input type="number" id="num-children" name="numChildren" required min="1">
+
+                    <label for="children-ages">Children's Ages (comma-separated):</label>
+                    <input type="text" id="children-ages" name="childrenAges" placeholder="e.g., 3, 5, 7" required>
+
+                    <label for="zip-code">Zip Code:</label>
+                    <input type="text" id="zip-code" name="zipCode" required>
+
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+
+</html>
