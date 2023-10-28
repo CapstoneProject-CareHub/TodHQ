@@ -205,6 +205,14 @@
         </section>
         </section>
         {% include 'footer.html' %}
+        
+        {% if success %}
+        <script>
+            alert('Your message has been successfully sent!');
+        </script>
+    {% endif %}
+
+        
 
 </body>
 

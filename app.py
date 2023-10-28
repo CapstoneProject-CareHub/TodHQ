@@ -111,6 +111,7 @@ def blog3():
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    success = False
     if request.method == 'POST':
         name = request.form['name']
         email = request.form['email']
@@ -121,9 +122,9 @@ def contact():
         db.session.add(new_contact)
         db.session.commit()
         
-        return redirect(url_for('success'))
+        success = True
     
-    return render_template('contact.html')
+    return render_template('contact.html', success=success)
 
 @app.route('/success')
 def success():
