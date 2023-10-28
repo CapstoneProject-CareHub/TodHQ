@@ -77,6 +77,18 @@ class ContactForm(db.Model):
     subject = db.Column(db.String(255), nullable=False)
     message = db.Column(db.Text, nullable=False)
 
+class Daycare(db.Model):
+    __tablename__ = 'daycares'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    description = db.Column(db.String(200), nullable=False)
+    zip = db.Column(db.String(10), nullable=False)
+    rating = db.Column(db.String(5), nullable=False)
+    contact_number = db.Column(db.String(15), nullable=False)
+
+    def __repr__(self):
+        return f"Daycare('{self.name}', '{self.zip}')"
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -88,10 +100,6 @@ def index():
 @app.route("/signin")
 def signin():
     return render_template("signin.html")
-
-@app.route("/signup")
-def signup():
-    return render_template("signup.html")
 
 @app.route("/about")
 def about():
@@ -115,6 +123,7 @@ def blog3():
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    success = False
     if request.method == 'POST':
         name = request.form['name']
         email = request.form['email']
@@ -125,9 +134,9 @@ def contact():
         db.session.add(new_contact)
         db.session.commit()
         
-        return redirect(url_for('success'))
+        success = True
     
-    return render_template('contact.html')
+    return render_template('contact.html', success=success)
 
 @app.route('/success')
 def success():
@@ -165,9 +174,16 @@ def volunteer():
 def signup():
     return render_template("signup.html")
 
-@app.route("/daycares.json")
-def daycares_json():
-    return send_from_directory(os.path.join(app.root_path, 'static'), 'daycares.json')
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    if request.method == 'POST':
+        zip_code = request.form['zip']
+        print(f"ZIP Code: {zip_code}")  # Check the received ZIP code
+        daycares = Daycare.query.filter_by(zip=zip_code).all()
+        print(f"Daycares: {daycares}")  # Check the retrieved daycares
+        return render_template('results.html', daycares=daycares)
+    return redirect(url_for('index'))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
