@@ -89,10 +89,6 @@ def index():
 def signin():
     return render_template("signin.html")
 
-@app.route("/signup")
-def signup():
-    return render_template("signup.html")
-
 @app.route("/about")
 def about():
     return render_template("about.html")
