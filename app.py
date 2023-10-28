@@ -7,6 +7,10 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
+@app.route('/success')
+def success():
+    return 'Signup successful!'
+
 @app.route("/index")
 def index():
     return render_template("index.html")
@@ -14,10 +18,6 @@ def index():
 @app.route("/signin")
 def signin():
     return render_template("signin.html")
-
-@app.route("/signup")
-def signup():
-    return render_template("signup.html")
 
 @app.route("/about")
 def about():
@@ -39,9 +39,22 @@ def blog2():
 def blog3():
     return render_template("blog3.html")
 
-@app.route("/contact")
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
-    return render_template("contact.html")
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        subject = request.form['subject']
+        message = request.form['message']
+        
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO contact_form (name, email, subject, message) VALUES (%s, %s, %s, %s)", (name, email, subject, message))
+        mysql.connection.commit()
+        cur.close()
+        
+        return redirect(url_for('success'))
+    
+    return render_template('contact.html')
 
 @app.route("/daycareowners")
 def daycareowners():
@@ -62,10 +75,6 @@ def results():
 @app.route("/services")
 def services():
     return render_template("services.html")
-
-@app.route("/services1")
-def services1():
-    return render_template("services1.html")
 
 @app.route("/volunteer")
 def volunteer():
