@@ -76,7 +76,7 @@ def results():
 def services():
     return render_template("services.html")
 
-@app.route("/services")
+@app.route("/services1")
 def services1():
     return render_template("services1.html")
 
