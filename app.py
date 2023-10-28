@@ -80,6 +80,10 @@ def services():
 def volunteer():
     return render_template("volunteer.html")
 
+@app.route("/signup")
+def signup():
+    return render_template("signup.html")
+
 @app.route("/daycares.json")
 def daycares_json():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'daycares.json')
