@@ -76,6 +76,10 @@ def results():
 def services():
     return render_template("services.html")
 
+@app.route("/services")
+def services1():
+    return render_template("services1.html")
+
 @app.route("/volunteer")
 def volunteer():
     return render_template("volunteer.html")
