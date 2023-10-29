@@ -207,3 +207,53 @@ iframe {
   overflow: hidden; /* To hide scrollbars */
   display: block; /* To remove any default spacing below the iframe */
 }
+
+/* ... Daycare results card-type style ... */
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 400px;
+  height: 500px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card .content {
+  padding: 20px;
+}
+
+.card .title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card .description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.card .info {
+  font-size: 14px;
+  color: #999;
+}

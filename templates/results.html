@@ -13,17 +13,20 @@
     <div class="search-results-container">
         <h1>Search Results</h1>
         {% if daycares %}
-            <ul>
+            <div class="card-container">
                 {% for daycare in daycares %}
-                    <li>
-                        <h2>{{ daycare.name }}</h2>
-                        <p>{{ daycare.description }}</p>
-                        <p>Zip Code: {{ daycare.zip }}</p>
-                        <p>Rating: {{ daycare.rating }}</p>
-                        <p>Contact Number: {{ daycare.contact_number }}</p>
-                    </li>
+                <div class="card" onclick="location.href='{{ daycare.url }}'">
+                    <img src="{{ url_for('static', filename=daycare.image_url or 'default.jpg') }}" alt="{{ daycare.name }}">
+                    <div class="content">
+                        <div class="title">{{ daycare.name }}</div>
+                        <div class="description">{{ daycare.description }}</div>
+                        <div class="info">Zip Code: {{ daycare.zip }}</div>
+                        <div class="info">Rating: {{ daycare.rating }}</div>
+                        <div class="info">Contact Number: {{ daycare.contact }}</div>
+                    </div>
+                </div>
                 {% endfor %}
-            </ul>
+            </div>
         {% else %}
             <p>No results found.</p>
         {% endif %}

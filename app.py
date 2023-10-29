@@ -79,6 +79,7 @@ class ContactForm(db.Model):
 
 class Daycare(db.Model):
     __tablename__ = 'daycares'
+    image_url = db.Column(db.String(255))
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(200), nullable=False)
@@ -156,7 +157,8 @@ def parent():
 
 @app.route("/results")
 def results():
-    return render_template("results.html")
+    daycares = Daycare.query.all()
+    return render_template("results.html", daycares=daycares)
 
 @app.route("/services")
 def services():
