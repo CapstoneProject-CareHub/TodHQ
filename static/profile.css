@@ -1,0 +1,92 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* Lighter grey for a fresher look */
+}
+
+header, footer {
+    background-color: #007bff; /* Bright blue for a professional but brighter look */
+    color: #ffffff;
+    text-align: center;
+    padding: 1em 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+.profile-container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd; /* Lighter border for less visual weight */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.profile-left, .profile-right {
+    flex: 1;
+    padding: 20px;
+}
+
+.profile-section {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #eff7ff; /* Very light blue background for section distinction */
+    border-left: 5px solid #007bff; /* Bright blue border on the left for visual accent */
+}
+
+h1 {
+    margin: 0 0 1em;
+    color: #333; /* Darker color for improved readability */
+    font-weight: 300; /* Lighter font weight for a modern touch */
+}
+
+h2 {
+    color: #007bff; /* Matching the primary color for consistency */
+    margin: 0 0 0.5em;
+    font-weight: 400; /* Slightly bolder than H1 for hierarchy */
+}
+
+button {
+    background-color: #28a745; /* Green color for success actions */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Shadow for depth */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #218838; /* Darker green on hover for interactive feedback */
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.daycare-image {
+    width: 100%; /* This will make the image fill the container width */
+    height: 700px; /* This is an example fixed height */
+    object-fit: contain; /* This will cover the area without distorting the image */
+    border-radius: 5px;
+    display: block;
+    margin: 20px auto;
+}

@@ -2,28 +2,31 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
+
 import pymysql
 pymysql.install_as_MySQLdb()
 
 import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Snowwhite16.@localhost/daycare_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Capstone@localhost/daycare_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-class User(db.Model):
+class Users(db.Model):
+    __tablename__ = 'users'  # Explicitly specify the table name
     UserID = db.Column(db.Integer, primary_key=True)
     UserRole = db.Column(db.String(50), nullable=False)
     Email = db.Column(db.String(255), unique=True, nullable=False)
     Password = db.Column(db.String(255), nullable=False)
-    daycare_owner = db.relationship('DaycareOwner', backref='user', uselist=False)
-    parent = db.relationship('Parent', backref='user', uselist=False)
-    volunteer = db.relationship('Volunteer', backref='user', uselist=False)
+    daycare_owner = db.relationship('DaycareOwner', backref='users', uselist=False)
+    parent = db.relationship('Parent', backref='users', uselist=False)
+    volunteer = db.relationship('Volunteer', backref='users', uselist=False)
+
 
 class DaycareOwner(db.Model):
-    OwnerID = db.Column(db.Integer, db.ForeignKey('user.UserID'), primary_key=True)
+    OwnerID = db.Column(db.Integer, db.ForeignKey('users.UserID'), primary_key=True)
     OwnerName = db.Column(db.String(255), nullable=False)
     Capacity = db.Column(db.Integer)
     LicenseNumber = db.Column(db.String(100))
@@ -38,13 +41,13 @@ class DaycareOwner(db.Model):
     Website = db.Column(db.String(255))
 
 class Parent(db.Model):
-    ParentID = db.Column(db.Integer, db.ForeignKey('user.UserID'), primary_key=True)
+    ParentID = db.Column(db.Integer, db.ForeignKey('users.UserID'), primary_key=True)
     ParentName = db.Column(db.String(255), nullable=False)
     NumberOfChildren = db.Column(db.Integer)
     ChildrenAges = db.Column(db.String(255))
 
 class Volunteer(db.Model):
-    VolunteerID = db.Column(db.Integer, db.ForeignKey('user.UserID'), primary_key=True)
+    VolunteerID = db.Column(db.Integer, db.ForeignKey('users.UserID'), primary_key=True)
     FullName = db.Column(db.String(255), nullable=False)
     SSN = db.Column(db.String(50))  # Consider security implications
     Age = db.Column(db.Integer)
@@ -180,12 +183,20 @@ def signup():
 def search():
     if request.method == 'POST':
         zip_code = request.form['zip']
-        print(f"ZIP Code: {zip_code}")  # Check the received ZIP code
         daycares = Daycare.query.filter_by(zip=zip_code).all()
-        print(f"Daycares: {daycares}")  # Check the retrieved daycares
         return render_template('results.html', daycares=daycares)
-    return redirect(url_for('index'))
+    else:
+        # Handle the GET request, possibly returning a search form
+        return render_template('search_form.html')
+
+
+@app.route('/daycare/<int:daycare_id>')
+def daycare_profile(daycare_id):
+    daycare = Daycare.query.get(daycare_id)  # Replace with the correct query to get the daycare by ID
+    return render_template('profile.html', daycare=daycare)
 
 
 if __name__ == "__main__":
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)

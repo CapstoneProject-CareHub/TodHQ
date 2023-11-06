@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'navbar.html' %}
+    <meta charset="UTF-8">
+    <title>{{ daycare.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+</head>
+<body>
+<div class="profile-container">
+    <div class="profile-content">
+        <div class="profile-left">
+            <div class="profile-image">
+                <img class="daycare-image" src="{{ url_for('static', filename=daycare.image_url) }}" alt="{{ daycare.name }}">
+            </div>
+
+            <div class="profile-section">
+                <h2>Location</h2>
+                <p>{{ daycare.address }}</p>
+                <p>Zip Code: {{ daycare.zipcode }}</p>
+            </div>
+
+            <div class="profile-section">
+                <h2>Operating Hours</h2>
+                <p>Days: {{ daycare.operating_days }}</p>
+                <p>Opening Time: {{ daycare.opening_time }}</p>
+                <p>Closing Time: {{ daycare.closing_time }}</p>
+            </div>
+
+            <div class="profile-section">
+                <h2>Ages Served</h2>
+                <p>Minimum Age: {{ daycare.min_age }}</p>
+                <p>Maximum Age: {{ daycare.max_age }}</p>
+            </div>
+
+            <div class="profile-section">
+                <h2>Capacity</h2>
+                <p>Maximum Children: {{ daycare.capacity }}</p>
+            </div>
+
+            <div class="profile-section">
+                <h2>Services Offered</h2>
+                <p>Meals: {{ daycare.meals }}</p>
+                <p>Educational Programs: {{ daycare.educational_programs }}</p>
+                <p>Extracurricular Activities: {{ daycare.extracurricular_activities }}</p>
+            </div>
+        </div>
+
+        <div class="profile-right">
+            <div class="profile-section">
+                <h2>Contact Information</h2>
+                <p>Phone: {{ daycare.phone }}</p>
+                <p>Email: {{ daycare.email }}</p>
+                <p>Website: <a href="{{ daycare.website }}">{{ daycare.website }}</a></p>
+            </div>
+            <div class="profile-section">
+                <h2>Safety Measures</h2>
+                <p>Security Features: {{ daycare.security_features }}</p>
+                <p>Health and Safety Protocols: {{ daycare.safety_protocols }}</p>
+            </div>
+
+            <div class="profile-section">
+                <h2>License and Accreditation</h2>
+                <p>License Number: {{ daycare.license_number }}</p>
+                <p>Accreditations: {{ daycare.accreditations }}</p>
+            </div>
+
+            <div class="profile-section">
+                <h2>Call-to-Action</h2>
+                <button>Contact Daycare</button>
+                <a href="{{ daycare.website }}">Visit Website</a>
+            </div>
+
+            <div class="profile-section">
+                <h2>Reviews and Ratings</h2>
+                <p>Testimonials: {{ daycare.testimonials }}</p>
+                <p>Average Ratings: {{ daycare.average_ratings }}</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}
+
+</body>
+</html>

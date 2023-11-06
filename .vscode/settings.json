@@ -9,8 +9,8 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "CapstoneProject",
-            "database": "daycare_db",
+            "name": "CapstoneConnection",
+            "database": "todhq",
             "username": "root",
             "password": "Snowwhite16."
         }
