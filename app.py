@@ -199,5 +199,5 @@ def daycare_profile(daycare_id):
 if __name__ == "__main__":
     with app.app_context():
         pass
-        #db.create_all()
+        db.create_all()
     app.run(debug=True)
