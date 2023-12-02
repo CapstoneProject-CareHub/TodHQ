@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Interface</title>
+    <style>
+        body {
+            background: #E8EBF5;
+            font-family: 'Raleway', sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        .chat-container {
+            position: fixed;
+            bottom: 40px;
+            right: 0;
+            margin: 15px;
+            z-index: 1000;
+        }
+
+        .chat-box {
+            width: 400px;
+            max-height: 500px;
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            visibility: hidden;
+            overflow: hidden;
+        }
+
+        .chat-box-header {
+            background-color: #2C50EF;
+            color: white;
+            padding: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-close-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .chat-box-body {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 10px;
+            overflow-y: auto;
+            background: #f8f8f8;
+        }
+
+        .chat-box-footer {
+            display: flex;
+            padding: 10px;
+            background-color: #fff;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .chat-box-footer input {
+            flex-grow: 1;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            margin-right: 10px;
+        }
+
+        .send-button {
+            background-color: #2C50EF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .chat-button {
+            position: fixed;
+            background-color: #2C50EF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            bottom: 15px;
+            right: 15px;
+        }
+
+        .chat-button:hover {
+            background-color: #1a38d6;
+        }
+
+        /* Scrollbar styles */
+        .chat-box-body::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .chat-box-body::-webkit-scrollbar-thumb {
+            background-color: #2C50EF;
+            border-radius: 10px;
+        }
+
+        @media screen and (max-width: 450px) {
+            .chat-box {
+                width: 100%;
+                border-radius: 0;
+            }
+        }
+
+        /* Chat bubble styles */
+        .chat-message {
+            margin: 5px 10px;
+            padding: 10px;
+            border-radius: 20px;
+            max-width: 40%;
+            word-wrap: break-word;
+            width: 80%;
+            /* Adjust the width of the chat bubbles */
+        }
+
+        .user-message {
+            background-color: #ECECEC;
+            /* align-self: flex-end; */
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .bot-message {
+            background-color: rgb(215, 215, 248);
+            margin-right: auto;
+            /* Pushes bot messages to the left */
+            text-align: left;
+            /* Aligns text to the left */
+        }
+        .chat-box-header h3 {
+            margin-left:  20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box">
+            <div class="chat-box-header">
+                <h3>Message Us</h3>
+                <button id="close-chat" class="chat-close-button">&times;</button>
+            </div>
+            <div class="chat-box-body" id="chat-box-body">
+                <!-- Chat messages will be appended here -->
+            </div>
+            <div class="chat-box-footer">
+                <input id="chat-input" placeholder="Enter Your Message" type="text" />
+                <button id="send-message" class="send-button">Send</button>
+            </div>
+        </div>
+        <button id="open-chat" class="chat-button">Chat with Us</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatBox = document.getElementById('chat-box');
+            const chatInput = document.getElementById('chat-input');
+            const sendMessageButton = document.getElementById('send-message');
+            const openChatButton = document.getElementById('open-chat');
+            const closeChatButton = document.getElementById('close-chat');
+            const chatBody = document.getElementById('chat-box-body');
+
+            // Open chat box
+            openChatButton.addEventListener('click', function () {
+                chatBox.style.visibility = 'visible';
+            });
+
+            // Close chat box
+            closeChatButton.addEventListener('click', function () {
+                chatBox.style.visibility = 'hidden';
+            });
+            // Add this inside the DOMContentLoaded function
+            chatInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault(); // Prevent the default action to avoid form submission
+                    sendMessage();
+                }
+            });
+
+            function sendMessage() {
+                const message = chatInput.value.trim();
+                if (message) {
+                    appendMessage(message, 'send');
+                    getResponseFromServer(message);
+                    chatInput.value = '';
+                }
+            }
+
+            // Update the existing event listener for the send button
+            sendMessageButton.addEventListener('click', sendMessage);
+
+            function appendMessage(message, type) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('chat-message');
+                if (type === 'send') {
+                    messageDiv.classList.add('user-message');
+                } else {
+                    messageDiv.classList.add('bot-message');
+                }
+                messageDiv.textContent = message;
+                chatBody.appendChild(messageDiv);
+                chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the bottom
+            }
+
+            // Show "typing..." indicator
+            function showTypingIndicator() {
+                const typingDiv = document.createElement('div');
+                typingDiv.classList.add('chat-message', 'bot-message');
+                typingDiv.textContent = 'Typing...';
+                chatBody.appendChild(typingDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+
+            // Remove "typing..." indicator
+            function removeTypingIndicator() {
+                const messages = chatBody.getElementsByClassName('chat-message');
+                if (messages.length > 0) {
+                    const lastMessage = messages[messages.length - 1];
+                    if (lastMessage.textContent === 'Typing...') {
+                        chatBody.removeChild(lastMessage);
+                    }
+                }
+            }
+            // // Get current time
+            // function getCurrentTime() {
+            //     const now = new Date();
+            //     return now.getHours() + ':' + (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
+            // }
+
+            // Get response from server
+            function getResponseFromServer(userMessage) {
+                showTypingIndicator();  // Show "typing..." when waiting for response
+                fetch('/get_chatbot_response', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: userMessage }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        removeTypingIndicator();  // Remove "typing..." once response is received
+                        appendMessage(data.response, 'receive');
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        removeTypingIndicator();
+                        appendMessage('Error getting response', 'receive');
+                    });
+            }
+        });
+    </script>
+</body>
+
+</html>

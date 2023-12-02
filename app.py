@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-
+import chatbot
 
 import pymysql
 pymysql.install_as_MySQLdb()
@@ -9,6 +9,8 @@ pymysql.install_as_MySQLdb()
 import os
 
 app = Flask(__name__)
+app.secret_key = '1243'  # Set a secret key for session management
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Capstone@localhost/daycare_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -97,17 +99,19 @@ class Daycare(db.Model):
 def home():
     return render_template("index.html")
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
 @app.route("/index")
 def index():
-    return render_template("index.html")
+    return render_template("index.html")  
 
 @app.route("/signin")
 def signin():
     return render_template("signin.html")
 
-@app.route("/about")
-def about():
-    return render_template("about.html")
+
 
 @app.route("/blog")
 def blog():
@@ -194,6 +198,18 @@ def search():
 def daycare_profile(daycare_id):
     daycare = Daycare.query.get(daycare_id)  # Replace with the correct query to get the daycare by ID
     return render_template('profile.html', daycare=daycare)
+
+
+# Chatbot routes
+# from chatbot import create_assistant
+assistant_id = "asst_cj0ojW3O4BwUmDYyYCDfBlfy"  
+
+
+@app.route('/get_chatbot_response', methods=['POST'])
+def get_chatbot_response():
+    user_message = request.json.get('message')
+    chatbot_response = chatbot.get_response(user_message, assistant_id)
+    return jsonify({'response': chatbot_response})
 
 
 if __name__ == "__main__":
