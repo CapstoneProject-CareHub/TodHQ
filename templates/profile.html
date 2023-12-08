@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <title>{{ daycare.name }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap" async defer></script>
 </head>
 <body>
 <div class="profile-container">
     <div class="profile-content">
         <div class="profile-left">
             <div class="profile-image">
-                <img class="daycare-image" src="{{ url_for('static', filename=daycare.image_url) }}" alt="{{ daycare.name }}">
+                <img class="daycare-image" src="{{ url_for('static', filename=daycare.image_url) if daycare.image_url else url_for('static', filename='/Users/aaliyahsalia/Desktop/SFBU/6thTrimester/CapstoneProject/TodHQ/static/images/care.jpg') }}" alt="{{ daycare.name }}">
             </div>
-
             <div class="profile-section">
                 <h2>Location</h2>
                 <p>{{ daycare.address }}</p>
@@ -77,10 +77,29 @@
                 <p>Average Ratings: {{ daycare.average_ratings }}</p>
             </div>
 
+            <div class="profile-section" id="map-container">
+                <h2>Location on Map</h2>
+                <div id="map" style="height: 700px; width: 100%;"></div>
+            </div>
         </div>
     </div>
 </div>
-
+<script>
+    function initMap() {
+        var daycareLocation = {lat: {{ daycare.latitude }}, lng: {{ daycare.longitude }}};
+    
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: daycareLocation
+        });
+    
+        var marker = new google.maps.Marker({
+            position: daycareLocation,
+            map: map
+        });
+    }
+    </script>    
+    
 {% include 'footer.html' %}
 
 </body>
