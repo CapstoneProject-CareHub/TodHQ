@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -6,12 +7,28 @@ import chatbot
 import pymysql
 pymysql.install_as_MySQLdb()
 
+from dotenv import load_dotenv
+load_dotenv()  # Load environment variables
+
 import os
+import pymysql
+from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from sqlalchemy import Time
+
+pymysql.install_as_MySQLdb()
+
+# Now you can use os.environ.get('VARIABLE_NAME') to access your environment variables
+api_key = os.environ.get('GOOGLE_MAPS_API_KEY')
 
 app = Flask(__name__)
+
 app.secret_key = '1243'  # Set a secret key for session management
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Capstone@localhost/daycare_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Capstoneproject123@34.102.79.31/daycare_db'
+
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -83,17 +100,36 @@ class ContactForm(db.Model):
     message = db.Column(db.Text, nullable=False)
 
 class Daycare(db.Model):
-    __tablename__ = 'daycares'
-    image_url = db.Column(db.String(255))
+    __tablename__ = 'daycare_profiles'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
-    description = db.Column(db.String(200), nullable=False)
-    zip = db.Column(db.String(10), nullable=False)
-    rating = db.Column(db.String(5), nullable=False)
-    contact_number = db.Column(db.String(15), nullable=False)
+    name = db.Column(db.String(255))
+    phone = db.Column(db.String(50))
+    email = db.Column(db.String(255))
+    website = db.Column(db.String(255))
+    security_features = db.Column(db.Text)
+    safety_protocols = db.Column(db.Text)
+    license_number = db.Column(db.String(100))
+    accreditations = db.Column(db.Text)
+    testimonials = db.Column(db.Text)
+    average_ratings = db.Column(db.DECIMAL(3, 2))
+    zip_code = db.Column(db.String(10))
+    operating_days = db.Column(db.String(255))
+    opening_time = db.Column(Time)
+    closing_time = db.Column(Time)
+    min_age = db.Column(db.Integer)
+    max_age = db.Column(db.Integer)
+    max_children = db.Column(db.Integer)
+    meals = db.Column(db.Text)
+    educational_programs = db.Column(db.Text)
+    extracurricular_activities = db.Column(db.Text)
+    image_url = db.Column(db.String(255)) 
+    latitude = db.Column(db.Float)  
+    longitude = db.Column(db.Float)  
+  
+
 
     def __repr__(self):
-        return f"Daycare('{self.name}', '{self.zip}')"
+        return f"Daycare(name='{self.name}', zip_code='{self.zip_code}')"
 
 @app.route("/")
 def home():
@@ -182,12 +218,12 @@ def volunteer():
 @app.route("/signup")
 def signup():
     return render_template("signup.html")
-
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     if request.method == 'POST':
         zip_code = request.form['zip']
-        daycares = Daycare.query.filter_by(zip=zip_code).all()
+        # Change the filter from zip to zip_code
+        daycares = Daycare.query.filter_by(zip_code=zip_code).all()
         return render_template('results.html', daycares=daycares)
     else:
         # Handle the GET request, possibly returning a search form
@@ -195,9 +231,9 @@ def search():
 
 
 @app.route('/daycare/<int:daycare_id>')
-def daycare_profile(daycare_id):
-    daycare = Daycare.query.get(daycare_id)  # Replace with the correct query to get the daycare by ID
-    return render_template('profile.html', daycare=daycare)
+def daycare_profiles(daycare_id):
+    daycare = Daycare.query.get_or_404(daycare_id)
+    return render_template('profile.html', daycare=daycare, api_key=api_key)
 
 
 # Chatbot routes
