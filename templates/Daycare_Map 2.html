@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Daycare Map</title>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Daycare Map</h3>
+    <div id="map"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=YAIzaSyCNzFH2XHCjigxEAiaA-AOIKw6ylrki7OE&callback=initMap" async defer></script>
+    <script>
+      // JavaScript code goes here
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: {lat: 37.7749, lng: -122.4194} // Change to a relevant center point
+        });
+    
+        var locations = [
+            {lat: 37.7749, lng: -122.4194, name: 'Daycare 1', zip: '94102'}, // Replace with your data
+            // ... more locations ...
+        ];
+    
+        locations.forEach(function(location) {
+            var marker = new google.maps.Marker({
+                position: {lat: location.lat, lng: location.lng},
+                map: map,
+                title: `${location.name} (${location.zip})`
+            });
+    
+            var infowindow = new google.maps.InfoWindow({
+                content: `${location.name} (Zip Code: ${location.zip})`
+            });
+    
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
+        });
+    }    
+    </script>
+  </body>
+</html>
