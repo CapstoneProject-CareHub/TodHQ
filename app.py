@@ -1,21 +1,12 @@
-
+from dotenv import load_dotenv
+load_dotenv()  # Load environment variables
+import os
+import pymysql
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-import chatbot
-
-import pymysql
-pymysql.install_as_MySQLdb()
-
-from dotenv import load_dotenv
-load_dotenv()  # Load environment variables
-
-import os
-import pymysql
-from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from sqlalchemy import Time
+# import chatbot
 
 pymysql.install_as_MySQLdb()
 
@@ -25,14 +16,10 @@ api_key = os.environ.get('GOOGLE_MAPS_API_KEY')
 app = Flask(__name__)
 
 app.secret_key = '1243'  # Set a secret key for session management
-
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Capstoneproject123@34.102.79.31/daycare_db'
-
-
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-
 class Users(db.Model):
     __tablename__ = 'users'  # Explicitly specify the table name
     UserID = db.Column(db.Integer, primary_key=True)
@@ -147,8 +134,6 @@ def index():
 def signin():
     return render_template("signin.html")
 
-
-
 @app.route("/blog")
 def blog():
     return render_template("blog.html")
@@ -228,7 +213,6 @@ def search():
     else:
         # Handle the GET request, possibly returning a search form
         return render_template('search_form.html')
-
 
 @app.route('/daycare/<int:daycare_id>')
 def daycare_profiles(daycare_id):

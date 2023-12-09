@@ -15,7 +15,7 @@
         {% if daycares %}
             <div class="card-container">
                 {% for daycare in daycares %}
-                <div class="card" onclick="location.href='{{ url_for('daycare_profile', daycare_id=daycare.id) }}'">                   
+                <div class="card" onclick="location.href='{{ url_for('daycare_profiles', daycare_id=daycare.id) }}'">                   
                     <!-- Check if daycare.image_url exists and if not, provide a default image -->
                     <img src="{{ url_for('static', filename=daycare.image_url) if daycare.image_url else 'images/d40.jpg' }}" alt="{{ daycare.name }}" class="daycare-image">
                     <div class="content">
