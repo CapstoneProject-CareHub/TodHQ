@@ -43,12 +43,12 @@ document.addEventListener('DOMContentLoaded', function () {
       heading.textContent = `Search Results for ${searchZip}`;
       searchResultsDiv.appendChild(heading);
 
-        results.forEach(result => {
-          const resultDiv = document.createElement('div');
-          resultDiv.classList.add('result-container');
-          resultDiv.innerHTML = `<strong>${result.name}</strong> (${result.rating}) <br> ${result.description} <br> ${result.contact_number}`;
-          searchResultsDiv.appendChild(resultDiv);
-        });
+      results.forEach(result => {
+        const resultDiv = document.createElement('div');
+        resultDiv.classList.add('result-container');
+        resultDiv.innerHTML = `<strong>${result.name}</strong> (${result.rating}) <br> ${result.description} <br> ${result.contact_number}`;
+        searchResultsDiv.appendChild(resultDiv);
+      });
       }
     })
     .catch(error => {
