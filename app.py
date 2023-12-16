@@ -169,7 +169,9 @@ def signin_post():
     if user and bcrypt.checkpw(password.encode('utf-8'), user.Password.encode('utf-8')):
         # User is authenticated, create a session
         session['user_id'] = user.UserID
-        return redirect(url_for('dashboard'))  # Redirect to a dashboard or another page
+        success = f"You have successfully logged in, {user.FirstName}!"
+        # return redirect(url_for('index.html'))  # Redirect to a dashboard or another page
+        return render_template("index.html", success=success)
     else:
         # Authentication failed
         error = "Invalid Username or Password, Please try again."
