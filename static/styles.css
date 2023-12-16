@@ -33,7 +33,13 @@ body {
     margin-top: 20px;
     margin-bottom: 30px;
   }
-
+#success_msg{
+  background-color: #ffffff;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  padding-top: 10px;
+}
 .search-box {
     flex: 1;
     padding-right: 50px;
