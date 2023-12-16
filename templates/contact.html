@@ -144,6 +144,12 @@
             text-align: center;
         }
     </style>
+    <script>
+        // JavaScript function to show the success message using browser alert
+        function showSuccessMessage() {
+            alert("Thank you for your message! We will get back to you as soon as possible.");
+        }
+    </script>
 
 </head>
 
@@ -164,7 +170,7 @@
 
     <!-- Contact Form -->
     <section>
-        <form action="/contact" method="post">
+        <form action="/contact" onsubmit="showSuccessMessage()">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -185,31 +191,31 @@
             <input type="submit" value="Submit">
         </form>
         <!-- Success Message -->
-        {% if success %}
-        <div style="text-align:center; margin-top: 20px;">
+        <!-- <div id="success-message" style="text-align:center; margin-top: 20px; display: none;">
             <p>Thank you for your message! We will get back to you as soon as possible.</p>
-        </div>
-        {% endif %}
+        </div> -->
     </section>
 
     <!-- Alternative Contact Methods -->
     <section id="contact-method">
         <section>
-            <p>You can also reach out to us directly at:</p>
-            <ul>
-                <li>
-                    <img src="{{ url_for('static', filename='images/email-icon.png') }}" alt="Email Icon" class="contact-icon" width="20px">
-                    Email: support@todhq.com
-                </li>
-                <li>
-                    <img src="{{ url_for('static', filename='images/phone-icon.png') }}"  alt="Phone Icon" class="contact-icon" width="20px">
-                    Phone: (123) 456-7890
-                </li>
-            </ul>
+        <p>You can also reach out to us directly at:</p>
+        <ul>
+            <li>
+                <img src="{{ url_for('static', filename='images/email-icon.png') }}" alt="Email Icon"
+                    class="contact-icon" width="20px">
+                Email: support@todhq.com
+            </li>
+            <li>
+                <img src="{{ url_for('static', filename='images/phone-icon.png') }}" alt="Phone Icon"
+                    class="contact-icon" width="20px">
+                Phone: (123) 456-7890
+            </li>
+        </ul>
 
         </section>
-        </section>
-        {% include 'footer.html' %}
+    </section>
+    {% include 'footer.html' %}
 
 </body>
 
