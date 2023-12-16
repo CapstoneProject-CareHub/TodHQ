@@ -174,6 +174,13 @@
             display: block;
         }
     </style>
+
+<script>
+    // JavaScript function to show the success message using browser alert
+    function showSuccessMessage() {
+        alert("Registered Successfully!");
+    }
+</script>
 </head>
 
 <body>
@@ -197,7 +204,7 @@
     <section id="signup-container">
         
         <h2>Care Giver Signup Form</h2>
-        <form id="signupForm" action="{{ url_for('submit_volunteer') }}" method="post" enctype="multipart/form-data">
+        <form id="signupForm" action="{{ url_for('submit_volunteer') }}" method="post" enctype="multipart/form-data" onsubmit="showSuccessMessage()>
             <label class="bold-label" for="firstName">First Name:</label>
             <input type="text" id="firstName" name="firstName" required>
 

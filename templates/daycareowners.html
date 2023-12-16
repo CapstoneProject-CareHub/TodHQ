@@ -74,6 +74,13 @@
             /* Ensures that labels appear above their associated inputs */
         }
     </style>
+
+    <script>
+        // JavaScript function to show the success message using browser alert
+        function showSuccessMessage() {
+            alert("Registration successful!");
+        }
+    </script>
 </head>
 
 <body>
@@ -84,7 +91,7 @@
     <div class="container">
         <h2>Daycare Owner Registration</h2>
 
-        <form action="your_server_side_script" method="post">
+        <form action="your_server_side_script" method="post" onsubmit="showSuccessMessage()>
             <label for="ownerName">Owner's Name:</label>
             <input type="text" id="ownerName" name="ownerName" required>
 
