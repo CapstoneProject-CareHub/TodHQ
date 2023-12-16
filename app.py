@@ -1,12 +1,22 @@
-from dotenv import load_dotenv
-load_dotenv()  # Load environment variables
-import os
-import pymysql
+
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Time
 import chatbot
+import bcrypt
+
+import pymysql
+pymysql.install_as_MySQLdb()
+
+from dotenv import load_dotenv
+load_dotenv()  # Load environment variables
+
+import os
+import pymysql
+from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from sqlalchemy import Time
 
 pymysql.install_as_MySQLdb()
 
@@ -16,20 +26,41 @@ api_key = os.environ.get('GOOGLE_MAPS_API_KEY')
 app = Flask(__name__)
 
 app.secret_key = '1243'  # Set a secret key for session management
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Capstoneproject123@34.102.79.31/daycare_db'
+
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-class Users(db.Model):
-    __tablename__ = 'users'  # Explicitly specify the table name
-    UserID = db.Column(db.Integer, primary_key=True)
-    UserRole = db.Column(db.String(50), nullable=False)
-    Email = db.Column(db.String(255), unique=True, nullable=False)
-    Password = db.Column(db.String(255), nullable=False)
-    daycare_owner = db.relationship('DaycareOwner', backref='users', uselist=False)
-    parent = db.relationship('Parent', backref='users', uselist=False)
-    volunteer = db.relationship('Volunteer', backref='users', uselist=False)
 
+# class Users(db.Model):
+    
+#     UserID = db.Column(db.Integer, primary_key=True)
+#     UserRole = db.Column(db.String(50), nullable=False)
+#     Email = db.Column(db.String(255), unique=True, nullable=False)
+#     Password = db.Column(db.String(255), nullable=False)
+#     daycare_owner = db.relationship('DaycareOwner', backref='users', uselist=False)
+#     parent = db.relationship('Parent', backref='users', uselist=False)
+#     volunteer = db.relationship('Volunteer', backref='users', uselist=False)
+
+class User(db.Model):
+    __tablename__ = 'User'  # Explicitly specify the table name
+    UserID = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    FirstName = db.Column(db.String(255), nullable=False)
+    LastName = db.Column(db.String(255), nullable=False)
+    Email = db.Column(db.String(255), nullable=False, unique=True)
+    phone = db.Column(db.String(50))
+    Password = db.Column(db.String(255), nullable=False)
+    State = db.Column(db.String(255))  # New field
+    City = db.Column(db.String(255))   # New field
+    zip_code = db.Column(db.String(20)) # New field
+    Role = db.Column(db.String(20), nullable=False)
+    Experience = db.Column(db.Integer, nullable=False)
+    Reference = db.Column(db.Text, nullable=False)
+    AvailableDays = db.Column(db.String(255), nullable=False)  # From Volunteer model
+    AvailableTimings = db.Column(db.String(255))  # From Volunteer model
+    IDProofPath = db.Column(db.String(255), nullable=False)
 
 class DaycareOwner(db.Model):
     OwnerID = db.Column(db.Integer, db.ForeignKey('users.UserID'), primary_key=True)
@@ -52,12 +83,6 @@ class Parent(db.Model):
     NumberOfChildren = db.Column(db.Integer)
     ChildrenAges = db.Column(db.String(255))
 
-class Volunteer(db.Model):
-    VolunteerID = db.Column(db.Integer, db.ForeignKey('users.UserID'), primary_key=True)
-    FullName = db.Column(db.String(255), nullable=False)
-    SSN = db.Column(db.String(50))  # Consider security implications
-    Age = db.Column(db.Integer)
-    HoursAvailable = db.Column(db.String(50))
 
 class Age(db.Model):
     AgeID = db.Column(db.Integer, primary_key=True)
@@ -75,11 +100,8 @@ class Daycare_DaysOfOperation(db.Model):
     OwnerID = db.Column(db.Integer, db.ForeignKey('daycare_owner.OwnerID'), primary_key=True)
     DayID = db.Column(db.Integer, db.ForeignKey('day.DayID'), primary_key=True)
 
-class Volunteer_DaysAvailable(db.Model):
-    VolunteerID = db.Column(db.Integer, db.ForeignKey('volunteer.VolunteerID'), primary_key=True)
-    DayID = db.Column(db.Integer, db.ForeignKey('day.DayID'), primary_key=True)
 
-class ContactForm(db.Model):
+class contact_form(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False)
@@ -134,6 +156,45 @@ def index():
 def signin():
     return render_template("signin.html")
 
+# # New route to handle sign-in form submission
+@app.route("/signin", methods=['POST'])
+def signin_post():
+    email = request.form['email']
+    password = request.form['password']
+
+    # Find user by email
+    user = User.query.filter_by(Email=email).first()
+
+    # Check if user exists and the password is correct
+    if user and bcrypt.checkpw(password.encode('utf-8'), user.Password.encode('utf-8')):
+        # User is authenticated, create a session
+        session['user_id'] = user.UserID
+        return redirect(url_for('dashboard'))  # Redirect to a dashboard or another page
+    else:
+        # Authentication failed
+        error = "Invalid Username or Password, Please try again."
+        return render_template("signin.html", error=error)
+        
+
+# Example route for a user dashboard (you need to create this)
+@app.route("/dashboard")
+def dashboard():
+    if 'user_id' in session:
+        user_id = session['user_id']
+        user = User.query.get(user_id)
+        if user:
+            return render_template("dashboard.html", user=user)
+        else:
+            # Handle case where user is not found
+            return "User not found", 404
+    else:
+        return redirect(url_for('signin'))
+# Route for logout
+@app.route("/logout")
+def logout():
+    session.pop('user_id', None)
+    return redirect(url_for('home'))
+
 @app.route("/blog")
 def blog():
     return render_template("blog.html")
@@ -159,7 +220,7 @@ def contact():
         subject = request.form['subject']
         message = request.form['message']
         
-        new_contact = ContactForm(name=name, email=email, subject=subject, message=message)
+        new_contact = contact_form(name=name, email=email, subject=subject, message=message)
         db.session.add(new_contact)
         db.session.commit()
         
@@ -200,6 +261,61 @@ def services1():
 def volunteer():
     return render_template("volunteer.html")
 
+@app.route('/submit_volunteer', methods=['POST'])
+def submit_volunteer():
+    # Extract data from the form
+    first_name = request.form['firstName']
+    last_name = request.form['lastName']
+    email = request.form['email']
+    password = request.form['password']
+    role = request.form['role']
+    state = request.form['state']
+    city = request.form['city']
+    zip_code = request.form['zip_code']
+    phone = request.form['phone']
+    available_timings = ', '.join(request.form.getlist('availableHours[]'))
+    experience = request.form['experience']
+    reference = request.form['reference']
+    available_days = ', '.join(request.form.getlist('availableDays[]'))
+
+
+    # Save the file to a specific folder
+    upload_folder = 'docs/uploaded_files'
+    if not os.path.exists(upload_folder):
+        os.makedirs(upload_folder)
+
+    id_proof_file = request.files['idProof']
+    id_proof_path = os.path.join(upload_folder, id_proof_file.filename)
+    id_proof_file.save(id_proof_path)
+
+    # Hash the password
+    password = request.form['password'].encode('utf-8')  # Convert the password to bytes
+    hashed_password = bcrypt.hashpw(password, bcrypt.gensalt())
+
+    # Create a new User instance
+    new_user = User(
+        FirstName=first_name,
+        LastName=last_name,
+        Email=email,
+        Password=hashed_password.decode('utf-8'),
+        State=state,
+        City=city,
+        zip_code=zip_code,
+        phone=phone,
+        Role=role,
+        Experience=experience,
+        Reference=reference,
+        AvailableDays=available_days,
+        AvailableTimings=available_timings,
+        IDProofPath=id_proof_path
+    )
+
+    db.session.add(new_user)
+    db.session.commit()
+
+    # Redirect or show a success message
+    return render_template('volunteer.html', success=True)
+
 @app.route("/signup")
 def signup():
     return render_template("signup.html")
@@ -213,6 +329,29 @@ def search():
     else:
         # Handle the GET request, possibly returning a search form
         return render_template('search_form.html')
+
+@app.route('/volunteer_search', methods=['GET','POST'])
+def volunteer_search():
+    if request.method == 'POST':
+        zip_code = request.form['zip_code']
+        role = request.form['role']
+
+        if role == 'volunteer':
+            # Search logic for volunteers
+            # Assuming Volunteer information is stored in User table
+            results = User.query.filter(User.zip_code == zip_code, User.Role == 'volunteer').all()
+            print("Results: ", results)  # Debugging line
+            return render_template('volunteer_results.html', results=results)
+        elif role == 'caregiver':
+            # Search logic for caregivers
+            results = User.query.filter(User.zip_code == zip_code, User.Role == 'caregiver').all()
+            print("Results: ", results)  # Debugging line
+            return render_template('volunteer_results.html', results=results)
+        else:
+            # Default search logic for daycare providers
+            results = Daycare.query.filter_by(zip_code=zip_code).all()
+            return render_template('results.html', daycares=daycares)
+    return render_template('volunteer_search_form.html')
 
 @app.route('/daycare/<int:daycare_id>')
 def daycare_profiles(daycare_id):

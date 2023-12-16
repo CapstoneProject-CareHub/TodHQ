@@ -1,0 +1,10 @@
+<form action="{{ url_for('volunteer_search') }}" method="post">
+    <input type="text" name="zip_code" placeholder="Enter ZIP Code">
+    <select name="role">
+        <option value="volunteer">volunteer</option>
+        <option value="caregiver">caregiver</option>
+        <option value="daycare">daycare provider</option>
+    </select>
+    <button type="submit">Search</button>
+</form>
+
