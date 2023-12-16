@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - TodHQ</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> Link to your CSS file -->
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="dashboard-container">
+        <h1>Welcome to Your Dashboard, {{ user.FirstName }}!</h1>
+        <p>Here you can manage your profile, view daycare options, and more.</p>
+
+        {% if results %}
+            <!-- Profile Overview Section -->
+            {% for user in results %}
+            <div class="profile-section">
+                <h2>Profile Overview</h2>
+                
+                <img src="profile_picture.jpg" alt="Profile Picture" width="100">
+                <h3>Name: {{ user.FirstName }} {{ user.LastName }}</h3>
+                <p>Contact Information: {{ user.Email }} | Phone: {{ user.phone }}</p>
+                <p>Experience: {{ user.Experience }} years</p>
+                <p>Reference: [Reference Information]</p>
+                <p>Availability: [Available Days and Timings]</p>
+            </div>
+                {% endfor %}
+                <div class="dashboard-links">
+                    <a href="{{ url_for('index') }}">View Daycares</a>
+                    <a href="{{ url_for('contact') }}">Contact Support</a>
+                </div>
+            </div>
+        {% else %}
+            <p>Unable to fetch results</p>
+        {% endif %}
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>

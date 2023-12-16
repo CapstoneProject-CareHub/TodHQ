@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
+    <!-- Add any additional CSS links here -->
+    <!-- <script src="{{ url_for('static', filename='script.js') }}" defer></script> -->
+    <style>
+        .results-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.volunteer-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.volunteer-card {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.volunteer-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.volunteer-card h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.volunteer-card p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 5px 0;
+}
+
+/* Styling for the "No volunteers found" message */
+.no-results {
+    font-size: 18px;
+    color: #666;
+    margin-top: 20px;
+}
+
+</style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="results-container">
+        <h1>Volunteer Search Results</h1>
+
+        {% if results %}
+            <div class="volunteer-list">
+                {% for user in results %}
+                <div class="volunteer-card">
+                    <h2>{{ user.FirstName }} {{ user.LastName }}</h2>
+                    <p>Email: {{ user.Email }}</p>
+                    <p>Phone: {{ user.phone }}</p>
+                    <p>ZIP Code: {{ user.zip_code }}</p>
+                    <p>Experience: {{ user.Experience }} years</p>
+                    <p>Role: {{ user.Role }}</p>
+                    <p>Reference: {{ user.Reference }}</p>
+                    <p>Availability Days: {{ user.AvailableDays }}</p>
+                    <p>Availability Times: {{ user.AvailableTimings }}</p>
+                    
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No volunteers found for the given ZIP code.</p>
+        {% endif %}
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>

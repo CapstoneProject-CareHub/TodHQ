@@ -51,7 +51,8 @@
 
         /* Authentication Button Styles */
         .btn-signin,
-        .btn-signup {
+        .btn-signup,
+        .btn-logout {
             display: inline-block;
             padding: 8px 20px;
             border-radius: 5px;
@@ -83,6 +84,12 @@
 
         }
 
+        .btn-logout{
+            background-color: #808080;
+            color: #fff;
+            margin-right: 25px;
+            border: 2px solid #808080;
+        }
         .dropdown {
             position: relative;
             display: inline-block;
@@ -148,8 +155,16 @@
             <a href="{{ url_for('contact') }}" class="nav-item" target="_top">Contact Us</a>
         </div>
         <div class="auth-links">
-            <a href="{{ url_for('signin') }}" class="auth-item btn-signin" target="_top">Sign In</a>
-            <a href="{{ url_for('signup') }}" class="auth-item btn-signup" target="_top">Sign Up</a>
+            <!-- <a href="{{ url_for('signin') }}" class="auth-item btn-signin" target="_top">Sign In</a>
+            <a href="{{ url_for('signup') }}" class="auth-item btn-signup" target="_top">Sign Up</a> -->
+            {% if 'user_id' in session %}
+        <!-- Display logout button when user is logged in -->
+                <a href="{{ url_for('logout') }}" class="auth-item btn-logout" target="_top">Logout</a>
+            {% else %}
+                <!-- Display sign-in and sign-up links when user is not logged in -->
+                <a href="{{ url_for('signin') }}" class="auth-item btn-signin" target="_top">Sign In</a>
+                <a href="{{ url_for('signup') }}" class="auth-item btn-signup" target="_top">Sign Up</a>
+            {% endif %}
         </div>
     </nav>
 
