@@ -10,6 +10,9 @@
 
 <body>
     {% include 'navbar.html' %}
+        {% if success %}
+            <p id= success_msg style="color: rgb(14, 13, 13);">{{ success }}</p>
+        {% endif %}
     <div class="search-container">
         <div class="search-box">
             <h1>Find High-quality, trusted daycare providers nearby.</h1>
